@@ -5,7 +5,7 @@ public class PromoPorcentual extends Promocion {
 	private Double porciento;
 
 	public PromoPorcentual(String nombreAtraccion, Double porciento, Atraccion[] atracciones) {
-		super(nombreAtraccion, TipoPromocion.PORCENTUAL, 0.0, atracciones);
+		super(nombreAtraccion, TipoPromocion.PORCENTUAL, 0, atracciones);
 		this.setPorciento(porciento);
 		this.setCostoAtraccion();
 	}
@@ -20,14 +20,14 @@ public class PromoPorcentual extends Promocion {
 
 	@Override
 	public void setCostoAtraccion() {
-		Double suma = 0.0;
+		double suma = 0.0;
 		for (Atraccion a : super.getAtracciones()) {
 			suma += a.getCostoAtraccion();
 		}
-		super.costoPromocion = suma * this.getPorciento();
+		super.costoPromocion = (int) Math.ceil(suma * this.getPorciento()) ;
 	}
 
 	@Override
-	public void setCostoAtraccion(Double costoPromocion) {}
+	public void setCostoAtraccion(Integer costoPromocion) {}
 
 }

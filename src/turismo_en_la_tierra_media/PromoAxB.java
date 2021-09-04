@@ -11,23 +11,23 @@ public class PromoAxB extends Promocion {
 		this.atraccionGratis = atraccionGratis;
 	}
 
-	public PromoAxB(String nombreAtraccion, Double costoPromocion, Atraccion[] atracciones) {
-		super(nombreAtraccion, TipoPromocion.AXB, 0.0, atracciones);
+	public PromoAxB(String nombreAtraccion, Integer costoPromocion, Atraccion[] atracciones) {
+		super(nombreAtraccion, TipoPromocion.AXB, 0, atracciones);
 		this.setCostoAtraccion();
 	}
 
 	@Override
-	public void setCostoAtraccion(Double costoPromocion) {
+	public void setCostoAtraccion(Integer costoPromocion) {
 		super.costoPromocion = costoPromocion;
 	}
 
 	@Override
 	public void setCostoAtraccion() {
-		Double suma = 0.0;
+		double suma = 0.0;
 		for (Atraccion a : super.getAtracciones()) {
 			suma += a.getCostoAtraccion();
 		}
-		super.costoPromocion = suma;
+		super.costoPromocion = (int) Math.ceil(suma);
 	}
 
 }

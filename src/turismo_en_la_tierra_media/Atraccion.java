@@ -2,12 +2,12 @@ package turismo_en_la_tierra_media;
 
 public class Atraccion {
 	private String nombreAtraccion; 
-	private Double costoAtraccion; 
+	private Integer costoAtraccion; 
 	private Double tiempoAtraccion; 
 	private Integer cupoUsuarios;
 	private Tematica tematicaAtraccion;
 
-	public Atraccion(String nombreAtraccion, Double costoAtraccion, Double tiempoAtraccion, 
+	public Atraccion(String nombreAtraccion, Integer costoAtraccion, Double tiempoAtraccion, 
 			         Integer cupoUsuarios, Tematica tematicaAtraccion) {
 		this.nombreAtraccion = nombreAtraccion;
 		this.costoAtraccion = costoAtraccion;
@@ -24,11 +24,11 @@ public class Atraccion {
 		this.nombreAtraccion = nombreAtraccion;
 	}
 
-	public Double getCostoAtraccion() {
+	public Integer getCostoAtraccion() {
 		return costoAtraccion;
 	}
 	
-	public void setCostoAtraccion(Double costoAtraccion) {
+	public void setCostoAtraccion(Integer costoAtraccion) {
 		this.costoAtraccion = costoAtraccion;
 	}
 

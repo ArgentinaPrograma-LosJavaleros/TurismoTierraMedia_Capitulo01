@@ -1,25 +1,25 @@
 package turismo_en_la_tierra_media;
 
 public abstract class Promocion {
-	private String nombreAtraccion;
+	private String nombrePromocion;
 	private TipoPromocion tipoPromocion;
-	protected Double costoPromocion;
+	protected Integer costoPromocion;
 	private Atraccion[] atracciones;
 
-	public Promocion(String nombreAtraccion, TipoPromocion tipoPromocion, Double costoPromocion, 
+	public Promocion(String nombrePromocion, TipoPromocion tipoPromocion, Integer costoPromocion, 
 			         Atraccion[] atracciones) {
-		this.nombreAtraccion = nombreAtraccion;
+		this.nombrePromocion = nombrePromocion;
 		this.tipoPromocion = tipoPromocion;
 		this.costoPromocion = costoPromocion;
 		this.atracciones = atracciones;
 	}
 
 	public String getNombreAtraccion() {
-		return nombreAtraccion;
+		return nombrePromocion;
 	}
 
 	public void setNombreAtraccion(String nombreAtraccion) {
-		this.nombreAtraccion = nombreAtraccion;
+		this.nombrePromocion = nombreAtraccion;
 	}
 
 	public TipoPromocion getTipoPromocion() {
@@ -30,11 +30,11 @@ public abstract class Promocion {
 		this.tipoPromocion = tipoPromocion;
 	}
 
-	public Double getCostoAtraccion() {
+	public Integer getCostoAtraccion() {
 		return costoPromocion;
 	}
 
-	public abstract void setCostoAtraccion(Double costoPromocion);
+	public abstract void setCostoAtraccion(Integer costoPromocion);
 
 	public abstract void setCostoAtraccion();
 
