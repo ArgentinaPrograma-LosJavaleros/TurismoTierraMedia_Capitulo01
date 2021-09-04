@@ -1,51 +1,49 @@
 package turismo_en_la_tierra_media;
 
 public class Usuario {
-	private String nombre_usuario;
-	private Integer cantidad_monedas;
-	private Double tiempo_disponible;
-	private Tematica tematica_usuario;
+	private String nombreUsuario;
+	private Integer cantidadMonedas;
+	private Double tiempoDisponible;
+	private Tematica preferenciaUsuario;
 
-	
-	
-	public Usuario(String nombre_usuario, Integer cantidad_monedas, Double tiempo_disponible,
-			Tematica tematica_usuario) {
-		this.nombre_usuario = nombre_usuario;
-		this.cantidad_monedas = cantidad_monedas;
-		this.tiempo_disponible = tiempo_disponible;
-		this.tematica_usuario = tematica_usuario;
+	public Usuario(String nombreUsuario, Integer cantidadMonedas, 
+			       Double tiempoDisponible, Tematica preferenciaUsuario) {
+		this.nombreUsuario = nombreUsuario;
+		this.cantidadMonedas = cantidadMonedas;
+		this.tiempoDisponible = tiempoDisponible;
+		this.preferenciaUsuario = preferenciaUsuario;
 	}
 
-	public String getNombre_usuario() {
-		return nombre_usuario;
+	public String getNombreUsuario() {
+		return nombreUsuario;
 	}
 
-	public void setNombre_usuario(String nombre_usuario) {
-		this.nombre_usuario = nombre_usuario;
+	public void setNombreUsuario(String nombreUsuario) {
+		this.nombreUsuario = nombreUsuario;
 	}
 
-	public Integer getCantidad_monedas() {
-		return cantidad_monedas;
+	public Integer getCantidadMonedas() {
+		return cantidadMonedas;
 	}
 
-	public void setCantidad_monedas(Integer cantidad_monedas) {
-		this.cantidad_monedas = cantidad_monedas;
+	public void setCantidadMonedas(Integer cantidadMonedas) {
+		this.cantidadMonedas = cantidadMonedas;
 	}
 
-	public Double getTiempo_disponible() {
-		return tiempo_disponible;
+	public Double getTiempoDisponible() {
+		return tiempoDisponible;
 	}
 
-	public void setTiempo_disponible(Double tiempo_disponible) {
-		this.tiempo_disponible = tiempo_disponible;
+	public void setTiempoDisponible(Double tiempoDisponible) {
+		this.tiempoDisponible = tiempoDisponible;
 	}
 
-	public Tematica getTematica_usuario() {
-		return tematica_usuario;
+	public Tematica getTematicaUsuario() {
+		return preferenciaUsuario;
 	}
 
-	public void setTematica_usuario(Tematica tematica_usuario) {
-		this.tematica_usuario = tematica_usuario;
+	public void setTematicaUsuario(Tematica preferenciaUsuario) {
+		this.preferenciaUsuario = preferenciaUsuario;
 	}
 
 }

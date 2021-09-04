@@ -1,62 +1,59 @@
 package turismo_en_la_tierra_media;
 
 public class Atraccion {
-	private String nombre_atraccion;
-	private Double costo_atraccion;
-	private Double tiempo_atraccion;
-	private Integer cupo_usuarios;
-	private Tematica tema_atraccion;
+	private String nombreAtraccion; 
+	private Double costoAtraccion; 
+	private Double tiempoAtraccion; 
+	private Integer cupoUsuarios;
+	private Tematica tematicaAtraccion;
 
-	
-	public Atraccion(String nombre_atraccion, Double costo_atraccion, Double tiempo_atraccion, Integer cupo_usuarios,
-			Tematica tema_atraccion) {
-		this.nombre_atraccion = nombre_atraccion ;
-		this.costo_atraccion = costo_atraccion;
-		this.tiempo_atraccion = tiempo_atraccion;
-		this.cupo_usuarios = cupo_usuarios;
-		this.tema_atraccion = tema_atraccion;
+	public Atraccion(String nombreAtraccion, Double costoAtraccion, Double tiempoAtraccion, 
+			         Integer cupoUsuarios, Tematica tematicaAtraccion) {
+		this.nombreAtraccion = nombreAtraccion;
+		this.costoAtraccion = costoAtraccion;
+		this.tiempoAtraccion = tiempoAtraccion;
+		this.cupoUsuarios = cupoUsuarios;
+		this.tematicaAtraccion = tematicaAtraccion;
 	}
 
-	public String getNombre_atraccion() {
-		return nombre_atraccion;
-	}
-
-	public void setNombre_atraccion(String nombre_atraccion) {
-		this.nombre_atraccion = nombre_atraccion;
-	}
-
-	public Double getCosto_atraccion() {
-		return costo_atraccion;
-	}
-
-	public void setCosto_atraccion(Double costo_atraccion) {
-		this.costo_atraccion = costo_atraccion;
-	}
-
-	public Double getTiempo_atraccion() {
-		return tiempo_atraccion;
-	}
-
-	public void setTiempo_atraccion(Double tiempo_atraccion) {
-		this.tiempo_atraccion = tiempo_atraccion;
-	}
-
-	public Integer getCupo_usuarios() {
-		return cupo_usuarios;
-	}
-
-	public void setCupo_usuarios(Integer cupo_usuarios) {
-		this.cupo_usuarios = cupo_usuarios;
-	}
-
-	public Tematica getTema_atraccion() {
-		return tema_atraccion;
-	}
-
-	public void setTema_atraccion(Tematica tema_atraccion) {
-		this.tema_atraccion = tema_atraccion;
+	public String getNombreAtraccion() {
+		return nombreAtraccion;
 	}
 	
+	public void setNombreAtraccion(String nombreAtraccion) {
+		this.nombreAtraccion = nombreAtraccion;
+	}
+
+	public Double getCostoAtraccion() {
+		return costoAtraccion;
+	}
 	
+	public void setCostoAtraccion(Double costoAtraccion) {
+		this.costoAtraccion = costoAtraccion;
+	}
+
+	public Double getTiempoAtraccion() {
+		return tiempoAtraccion;
+	}
+	
+	public void setTiempoAtraccion(Double tiempoAtraccion) {
+		this.tiempoAtraccion = tiempoAtraccion;
+	}
+
+	public Integer getCupoUsuarios() {
+		return cupoUsuarios;
+	}
+
+	public void setCupoUsuarios(Integer cupoUsuarios) {
+		this.cupoUsuarios = cupoUsuarios;
+	}
+
+	public Tematica getTematicaAtraccion() {
+		return tematicaAtraccion;
+	}
+
+	public void setTematicaAtraccion(Tematica tematicaAtraccion) {
+		this.tematicaAtraccion = tematicaAtraccion;
+	}
 
 }
