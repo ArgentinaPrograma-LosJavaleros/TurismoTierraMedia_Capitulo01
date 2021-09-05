@@ -14,6 +14,7 @@ public class Atraccion {
 		this.tiempoAtraccion = tiempoAtraccion;
 		this.cupoUsuarios = cupoUsuarios;
 		this.tematicaAtraccion = tematicaAtraccion;
+		
 	}
 
 	public String getNombreAtraccion() {
@@ -56,4 +57,11 @@ public class Atraccion {
 		this.tematicaAtraccion = tematicaAtraccion;
 	}
 
+	@Override
+	public String toString() {
+		return "Atraccion [nombreAtraccion=" + nombreAtraccion + ", costoAtraccion=" + costoAtraccion
+				+ ", tiempoAtraccion=" + tiempoAtraccion + ", cupoUsuarios=" + cupoUsuarios + ", tematicaAtraccion="
+				+ tematicaAtraccion.getNombre() + "]\n";
+	}
+	
 }

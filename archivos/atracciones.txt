@@ -1,0 +1,16 @@
+Moria 10 2 6 Aventura
+Minas_Tirith 5 2.5 25 Paisaje
+La_Comarca 3 6.5 150 Degustacion
+Mordor 25 3 4 Aventura
+Abismo_de_Helm 5 2 15 Paisaje
+Lothlorien 35 1 30 Degustacion
+Erebor 12 3 32 Paisaje
+Bosque_Negro 3 4 12 Aventura
+Danza_De_Los_Dragones 500 3.0 2 Entretenimiento
+Festival_De_Colores 20 0.5 200 Entretenimiento
+Ventizca_Invernal 30 0.2 50 Extremo
+Espadachines 100 2.0 2 Extremo
+Caballos_Super_Veloces 100 5 8 Carrera
+Duelo_A_Muerte_Con_Cuchillos 1000 3 2 Extremo
+
+

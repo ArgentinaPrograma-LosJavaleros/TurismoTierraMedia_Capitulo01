@@ -1,13 +1,15 @@
 package turismo_en_la_tierra_media;
 
+import java.util.ArrayList;
+
 public abstract class Promocion {
 	private String nombrePromocion;
 	private TipoPromocion tipoPromocion;
 	protected Integer costoPromocion;
-	private Atraccion[] atracciones;
+	private ArrayList<Atraccion> atracciones;
 
 	public Promocion(String nombrePromocion, TipoPromocion tipoPromocion, Integer costoPromocion, 
-			         Atraccion[] atracciones) {
+			ArrayList<Atraccion> atracciones) {
 		this.nombrePromocion = nombrePromocion;
 		this.tipoPromocion = tipoPromocion;
 		this.costoPromocion = costoPromocion;
@@ -38,12 +40,12 @@ public abstract class Promocion {
 
 	public abstract void setCostoAtraccion();
 
-	public Atraccion[] getAtracciones() {
+	public ArrayList<Atraccion> getAtracciones() {
 		return atracciones;
 	}
 
-	public void setAtracciones(Atraccion[] atracciones) {
-		this.atracciones = atracciones;
+	public void setAtracciones(Atraccion atraccion) {
+		this.atracciones.add(atraccion);
 	}
-
+	
 }

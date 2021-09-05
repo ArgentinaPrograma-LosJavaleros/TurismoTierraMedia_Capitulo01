@@ -46,4 +46,10 @@ public class Usuario {
 		this.preferenciaUsuario = preferenciaUsuario;
 	}
 
+	@Override
+	public String toString() {
+		return "Usuario [nombreUsuario=" + nombreUsuario + ", cantidadMonedas=" + cantidadMonedas
+				+ ", tiempoDisponible=" + tiempoDisponible + ", preferenciaUsuario=" + preferenciaUsuario.getNombre() + "]\n";
+	}
+	
 }
