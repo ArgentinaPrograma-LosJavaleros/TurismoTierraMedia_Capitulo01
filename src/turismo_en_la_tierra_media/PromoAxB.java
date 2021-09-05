@@ -47,9 +47,18 @@ public class PromoAxB extends Promocion {
 
 	@Override
 	public String toString() {
-		return "Promo AxB [Atracción gratis = " + getAtraccionGratis() + " | Nombre = " + getNombrePromocion()
-				+ " | Tipo = " + getTipoPromocion() + " | Costo = " + getCostoPromocion() + " | Atracciones = "
-				+ getAtracciones() + "]";
+		
+		System.out.printf("| Nombre = %-15s"
+                        + "| Atracciones = %-40s"
+                        + "| Atracción gratis = %-29s"
+                        + "| Precio Final = %-5d"
+                        + "| Tipo = %-10s |", 
+                        getNombrePromocion(),
+                        getNombreAtracciones(),
+                        getAtraccionGratis().getNombreAtraccion(),
+                        getCostoPromocion(),
+                        getTipoPromocion());
+		return "";
 	}
 
 }

@@ -13,7 +13,7 @@ public class Usuario {
 		setNombreUsuario(nombreUsuario);
 		setCantidadMonedas(cantidadMonedas);
 		setTiempoDisponible(tiempoDisponible);
-		setTematicaUsuario(preferenciaUsuario);
+		setPreferenciaUsuario(preferenciaUsuario);
 	}
 	
 	// Setters
@@ -30,14 +30,14 @@ public class Usuario {
 		this.tiempoDisponible = tiempoDisponible;
 	}
 	
-	public void setTematicaUsuario(Tematica preferenciaUsuario) {
+	public void setPreferenciaUsuario(Tematica preferenciaUsuario) {
 		this.preferenciaUsuario = preferenciaUsuario;
 	}
 	//--------------------------------------------------------------------------
 	
 	// Getters
 	//--------------------------------------------------------------------------
-	public Tematica getTematicaUsuario() {
+	public Tematica getPreferenciaUsuario() {
 		return preferenciaUsuario;
 	}
 	
@@ -56,9 +56,15 @@ public class Usuario {
 
 	@Override
 	public String toString() {
-		return "Usuario [Nombre = " + nombreUsuario + " | Monedas = " + cantidadMonedas
-				+ " | Tiempo = " + tiempoDisponible + " | Preferencia = " + preferenciaUsuario.getNombre()
-				+ "]";
+		System.out.printf("| Nombre = %-12s"
+				        + "| Monedas = %-5d"
+				        + "| Tiempo = %-5.1f"
+				        + "| Preferencia = %-15s |", 
+				        getNombreUsuario(), 
+				        getCantidadMonedas(), 
+				        getTiempoDisponible(), 
+				        getPreferenciaUsuario().getNombre());
+		return "";
 	}
 
 }

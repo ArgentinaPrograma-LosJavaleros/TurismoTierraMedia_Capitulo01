@@ -65,46 +65,17 @@ public class Atraccion {
 
 	@Override
 	public String toString() {
-		return "Atraccion [Nombre = " + getNombreAtraccion() + " | Atracción = " + getCostoAtraccion()
-				+ " | Tiempo = " + getTiempoAtraccion() + " | Cupo = " + cupoUsuarios + " | Temática = "
-				+ getTematicaAtraccion().getNombre() + "]";
+		System.out.printf("| Nombre = %-29s" 
+		                + "| Costo = %-5d"
+			            + "| Tiempo = %-5.1f"
+			            + "| Cupo = %-5d" 
+			            + "| Temática = %-15s |", 
+			            getNombreAtraccion(),
+			            getCostoAtraccion(),
+			            getTiempoAtraccion(),
+			            getCupoUsuarios(),
+			            getTematicaAtraccion().getNombre());
+		return "";
 	}
 	
 }
-
-// Aguante el mortal kombat
-//_..----------.._                       
-//.-=""        _       ""=-.                  
-//.-"    _.--""j _\""""--._    "-.               
-//.-"  .-i   \   / / \;       ""--.  "-.            
-//.'  .-"  : ( "  : :                "-.  `.          
-//.'  .'      `.`.   \ \                  `.  `.        
-///  .'      .---" ""--`."-./'---.           `.  \       
-///  /      .'                    '-.           \  \      
-///  /      /                         `.          \  \     
-///  /      /                  ,--._   (            \  \    
-//,  /    '-')                  `---'    `.           \  .   
-//.  :      .'                              "-._.-.     ;  ,  
-//;  ;     /            :;         ,-"-.    ,--.   )    :  :  
-//:  :     :             ::        :_    "-. '-'   `,     ;  ; 
-//|  |     :              \\     .--."-.    `._ _   ;     |  | 
-//;  ;     :              / "---"    "-."-.    l.`./      :  : 
-//:  :      ;             :              `. "-._; \         ;  ;
-//;  ;      ;             ;                `..___/\\        :  :
-//;  ;      ;             :                        \\    _  :  :
-//:  :     /              '.                        ;;.__)) ;  ;
-//;  ; .-'                 "-...______...--._      ::`--' :  : 
-//|  |  `--'\                                "-.    \`._, |  | 
-//:  :       \                                  `.   "-"  ;  ; 
-//;  ;       `.                                  \      :   ' 
-//'  :        ;                                   ;     ;  '  
-//'  \    _  : :`.                               :    /  /   
-//\  \   \`-' ; ; ._                             ;  /  /    
-//\  \   `--'  : ; "-.                          : /  /     
-//\  \        ;/     \                         ;/  /      
-//\  `.              ;                        '  /       
-//`.  "-.   bug    /                          .'        
-//`.   "-..__..-"                         .'          
-//"-.                                .-"            
-//"-._                        _.-"               
-//"""---...______...---"""

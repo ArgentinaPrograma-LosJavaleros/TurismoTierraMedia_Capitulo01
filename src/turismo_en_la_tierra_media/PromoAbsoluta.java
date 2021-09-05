@@ -20,12 +20,31 @@ public class PromoAbsoluta extends Promocion {
 	@Override
 	public void setCostoPromocion() {}
 	//--------------------------------------------------------------------------
+	
+	// Getter
+	//----------------------------------------------
+	public Integer getCostoAnterior() {
+		double suma = 0.0;
+		for (Atraccion a : super.getAtracciones()) {
+			suma += a.getCostoAtraccion();
+		}
+		return (int) Math.ceil(suma);
+	}
 
 	@Override
 	public String toString() {
-		return "Promo Absoluta [Costo = " + getCostoPromocion() + " | Nombre = " + getNombrePromocion() + " | Tipo = "
-				+ getTipoPromocion() + " | Costo = " + getCostoPromocion() + " | Atracciones = " + getAtracciones()
-				+ "]";
+
+		System.out.printf("| Nombre = %-15s"
+		                + "| Atracciones = %-40s"
+		                + "| Costo Anterior = %-31d"
+		                + "| Precio Final = %-5d"
+		                + "| Tipo = %-10s |", 
+		                getNombrePromocion(),
+		                getNombreAtracciones(),
+		                getCostoAnterior(),
+		                getCostoPromocion(),
+		                getTipoPromocion());
+		return "";
 	}
 
 }

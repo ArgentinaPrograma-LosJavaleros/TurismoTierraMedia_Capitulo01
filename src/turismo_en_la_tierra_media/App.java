@@ -10,19 +10,11 @@ public class App {
 //		System.out.println(Archivo.cargarAtracciones());
 //		System.out.println(Archivo.cargarUsuario());
 //		System.out.println(Archivo.cargarPromociones(Archivo.cargarAtracciones()));
-
-		for (Usuario a : Archivo.cargarUsuario()) {
-			System.out.println(a);
-		}
-
-		for (Atraccion a : Archivo.cargarAtracciones()) {
-			System.out.println(a);
-		}
-
-		for (Promocion a : Archivo.cargarPromociones(Archivo.cargarAtracciones())) {
-			System.out.println(a);
-		}
-
+		
+		Sistema.generarLista("usuarios");
+		Sistema.generarLista("atracciones");
+		Sistema.generarLista("promociones");		
+				
 		ArrayList<String> b = new ArrayList<String>();
 		b.add("Moria");
 

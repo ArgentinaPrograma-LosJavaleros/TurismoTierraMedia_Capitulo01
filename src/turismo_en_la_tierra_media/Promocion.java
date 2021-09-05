@@ -54,6 +54,14 @@ public abstract class Promocion {
 	public ArrayList<Atraccion> getAtracciones() {
 		return atracciones;
 	}
+	
+	public ArrayList<String> getNombreAtracciones() {
+		ArrayList<String> lstNombreAtracciones = new ArrayList<String>();
+		for (Atraccion a : this.getAtracciones())
+			lstNombreAtracciones.add(a.getNombreAtraccion());
+		return lstNombreAtracciones;
+	}
+
 	//--------------------------------------------------------------------------
 	
 	// Setters abstractos

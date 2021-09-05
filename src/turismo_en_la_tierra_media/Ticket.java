@@ -73,8 +73,33 @@ public class Ticket {
 
 	@Override
 	public String toString() {
-		return "Ticket [Comprador = " + getComprador() + " | Monedas gastadas = " + getMonedasGastadas()
-				+ " |  Tiempo gastado = " + getTiempoGastado() + " | Atracciones reservadas = "
-				+ getAtraccionesReservadas() + " | Promociones reservadas = " + getPromocionesReservadas() + "]";
+		
+		System.out.println(" ______________________________________________");
+		System.out.println("|                                              |");
+		System.out.println("|           TURISMO EN LA TIERRA MEDIA         |");
+		System.out.println("|               TICKET DE ACCESO               |");
+		System.out.println("|______________________________________________|");
+		System.out.println("|                                              |");
+		System.out.printf( "|Comprador/a %34s|\n", getComprador());
+		System.out.println("|                                              |");
+		System.out.printf( "|Monedas Gastadas %29s|\n", getMonedasGastadas());
+		System.out.println("|                                              |");
+		System.out.printf( "|Tiempo Gastado  %30s|\n", getTiempoGastado());
+		System.out.println("|                                              |");
+		System.out.println("|::::::::::::::::::::::::::::::::::::::::::::::|");
+		System.out.println("|Promociones Reservadas:                       |");
+		for (String p : getPromocionesReservadas())
+			System.out.printf( "|%46s|\n", p);
+		System.out.println("|Atracciones Reservadas:                       |");
+		for (String a : getAtraccionesReservadas())
+			System.out.printf( "|%46s|\n", a);
+		System.out.println("|                                              |");
+		System.out.println("|                                              |");
+		System.out.println("|        ¡MUCHAS GRACIAS POR SU COMPRA!        |");
+		System.out.println("|                                              |");
+		System.out.println("|______________________________________________|");
+		
+		return "";
+		
 	}
 }

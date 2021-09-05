@@ -186,9 +186,32 @@ public class Archivo {
 	public static Ticket generarTicket(Ticket ticket, boolean noSobrescribir)
 			throws IOException, FileNotFoundException {
 		PrintWriter pw = new PrintWriter(new FileWriter(DIRECCION_ARCHIVO + "tickets.txt", noSobrescribir));
-
-		pw.println(ticket.getComprador() + " " + ticket.getMonedasGastadas() + " " + ticket.getTiempoGastado() + " "
-				+ ticket.getAtraccionesReservadas() + " " + ticket.getPromocionesReservadas());
+		
+		pw.println(" ______________________________________________");
+		pw.println("|                                              |");
+		pw.println("|           TURISMO EN LA TIERRA MEDIA         |");
+		pw.println("|               TICKET DE ACCESO               |");
+		pw.println("|______________________________________________|");
+		pw.println("|                                              |");
+		pw.printf( "|Comprador/a %34s|\n", ticket.getComprador());
+		pw.println("|                                              |");
+		pw.printf( "|Monedas Gastadas %29s|\n", ticket.getMonedasGastadas());
+		pw.println("|                                              |");
+		pw.printf( "|Tiempo Gastado  %30s|\n", ticket.getTiempoGastado());
+		pw.println("|                                              |");
+		pw.println("|::::::::::::::::::::::::::::::::::::::::::::::|");
+		pw.println("|Promociones Reservadas:                       |");
+		for (String p : ticket.getPromocionesReservadas())
+			pw.printf( "|%46s|\n", p);
+		pw.println("|Atracciones Reservadas:                       |");
+		for (String a : ticket.getAtraccionesReservadas())
+			pw.printf( "|%46s|\n", a);
+		pw.println("|                                              |");
+		pw.println("|                                              |");
+		pw.println("|        ¡MUCHAS GRACIAS POR SU COMPRA!        |");
+		pw.println("|                                              |");
+		pw.println("|______________________________________________|");
+		
 		pw.close();
 
 		return ticket;
