@@ -1,3 +1,12 @@
-Pack_Bosque Porcentual 0.20 Bosque_Negro Mordor
-Pack_NiomNiom Absoluta 36 Lothlorien La_Comarca
-Pack_Abismo AxB Erebor Minas_Tirith Abismo_De_Helm
+Zonas_De_La_Oscuridad Porcentual 0.20 Bosque_Negro Mordor
+Astucia Absoluta 38 Moria Visitando_Aguas_Turbias
+NiomNiom Absoluta 36 Lothlorien La_Comarca
+Salis_En_Carreta AxB La_Comarca Alto_Guiso Los_Elixires_Del_Senior_Olaf
+Contemplad_La_Profundidad AxB Erebor Minas_Tirith Abismo_De_Helm
+Wachen_El_Paisaje_Homies Absoluta 20 Erebor El_Vacio
+Espectaculo_De_Fuegos_Fatuos Porcentual 0.40 Festival_De_Fuegos_Artificiales Magia_Aldeana
+Vuelo_Igneo Absoluta 600 Danza_De_Los_Dragones Magia_Aldeana
+Prohibido_Ahogarse porcentual 0.30 Trayectoria_Acuatica Cubetas_De_Agua
+Velozmente_Fuerte porcentual 0.60 Caballos_Super_Veloces El_Desencadenamiento
+Filo_Sangriento Absoluta 999 Espadachines Duelo_A_Muerte_Con_Cuchillos
+Medio_Doble_De_Riesgo AxB Duelo_A_Muerte_Con_Cuchillos Espadachines Las_Flechas_De_Orlando_Bloom
