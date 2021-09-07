@@ -42,8 +42,8 @@ public class PromoPorcentual extends Promocion {
 
 	@Override
 	public String toString() {
-		System.out.printf("| Nombre = %-15s"
-				        + "| Atracciones = %-40s"
+		System.out.printf("| Nombre = %-30s"
+				        + "| Atracciones = %-50s"
 				        + "| Descuento = %-36.2f"
 				        + "| Precio Final = %-5d"
 				        + "| Tipo = %-10s |", 

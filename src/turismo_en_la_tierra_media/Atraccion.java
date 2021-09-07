@@ -65,7 +65,7 @@ public class Atraccion {
 
 	@Override
 	public String toString() {
-		System.out.printf("| Nombre = %-29s" 
+		System.out.printf("| Nombre = %-35s" 
 		                + "| Costo = %-5d"
 			            + "| Tiempo = %-5.1f"
 			            + "| Cupo = %-5d" 

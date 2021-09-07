@@ -34,8 +34,8 @@ public class PromoAbsoluta extends Promocion {
 	@Override
 	public String toString() {
 
-		System.out.printf("| Nombre = %-15s"
-		                + "| Atracciones = %-40s"
+		System.out.printf("| Nombre = %-30s"
+		                + "| Atracciones = %-50s"
 		                + "| Costo Anterior = %-31d"
 		                + "| Precio Final = %-5d"
 		                + "| Tipo = %-10s |", 
