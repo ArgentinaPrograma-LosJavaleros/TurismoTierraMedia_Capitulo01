@@ -172,11 +172,13 @@ public class Archivo {
 
 	private static Atraccion getAtraccion(String nombre, ArrayList<Atraccion> atracciones)
 			throws NoExisteAtraccionException {
-
+	
 		// Compara si la atracción ingresada existe en la lista de atracciones.
-		for (Atraccion a : atracciones)
-			if (a.getNombreAtraccion().toLowerCase().equals(nombre.toLowerCase()))
+		for (Atraccion a : atracciones) {
+			String s = a.getNombreAtraccion();
+			if (s.toLowerCase().equals(nombre.replace("_", " ").toLowerCase()))
 				return a;
+		}
 
 		throw new NoExisteAtraccionException("NO existe la atraccion \"" + nombre + "\"");
 	}

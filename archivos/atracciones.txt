@@ -13,10 +13,10 @@ El_Vacio 10 1 15 Paisaje
 Danza_De_Los_Dragones 500 3.0 2 Entretenimiento
 Festival_De_Fuegos_Artificiales 20 0.5 200 Entretenimiento
 Festival_De_Aves 10 1 30 Entretenimiento
-Magia_En_La_Aldea 200 8 100 Entretenimiento
+Magia_Aldeana 200 8 100 Entretenimiento
 Caballos_Super_Veloces 100 5 8 Carrera
 Trayectoria_Acuatica 50 4 12 Carrera
-Cubetas_De_Agua	40 4 5 Carrera
+Cubetas_De_Agua 40 4 5 Carrera
 El_Desencadenamiento 150 5 10 Carrera
 Ventisca_Invernal 30 0.2 50 Extremo
 Espadachines 100 2 2 Extremo
