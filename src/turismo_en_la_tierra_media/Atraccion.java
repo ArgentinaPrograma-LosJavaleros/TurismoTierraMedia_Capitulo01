@@ -1,6 +1,6 @@
 package turismo_en_la_tierra_media;
 
-public class Atraccion {
+public class Atraccion extends Sugerible {
 	
 	private String nombreAtraccion; 
 	private Integer costoAtraccion, cupoUsuarios; 
@@ -76,6 +76,12 @@ public class Atraccion {
 			            getCupoUsuarios(),
 			            getTematicaAtraccion().getNombre());
 		return "";
+	}
+
+	@Override
+	public int compareTo(Sugerible s) {
+		// TODO Auto-generated method stub
+		return 0;
 	}
 	
 }

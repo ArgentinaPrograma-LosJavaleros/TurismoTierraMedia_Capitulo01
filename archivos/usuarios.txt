@@ -9,6 +9,6 @@ Camila 50 2.0 Degustacion
 Lucas 200 8.0 Extremo
 Dark_Knight 170 10.0 Paisaje
 Laureana 85 4.0 Entretenimiento
-Leo 2000 10.0 Aventura 
-Lucas 2000 8.0 Paisaje
-Federico 2000 6.0 Entretenimiento
+Profe_Leo 2000 10.0 Aventura 
+Profe_Lucas 2000 8.0 Paisaje
+Profe_Fede 2000 6.0 Entretenimiento

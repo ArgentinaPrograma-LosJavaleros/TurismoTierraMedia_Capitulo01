@@ -1,12 +1,15 @@
 package turismo_en_la_tierra_media;
 
 import java.util.ArrayList;
+import java.util.Scanner;
 
 public class Sistema {
 	
 	private ArrayList<Usuario> usuarios;
 	private ArrayList<Atraccion> atracciones;
 	private ArrayList<Promocion> promociones;
+	private static final String RESPUESTA_SI = "SI";
+	private static final String RESPUESTA_NO = "NO";
 	
 	// Setters
 	//--------------------------------------------------------------------------
@@ -37,6 +40,46 @@ public class Sistema {
 		return promociones;
 	}
 	//--------------------------------------------------------------------------
+	
+	public static boolean validarUsuario(ArrayList<Usuario> listaUsuarios, String nombreUsuario) {
+		Usuario usuarioEncontrado = null;
+		for (Usuario u : listaUsuarios)
+			if(nombreUsuario.toLowerCase().equals(u.getNombreUsuario().toLowerCase())) {
+				usuarioEncontrado = u;
+			}
+		return listaUsuarios.contains(usuarioEncontrado);
+	}
+	
+	public static void cargarOfertas(Usuario usuario, ArrayList<Promocion> listaPromociones, 
+			                         ArrayList<Atraccion> listaAtracciones) {
+		Scanner ingreso = new Scanner(System.in);
+		
+		for (Promocion p : listaPromociones) {
+			System.out.println("¿Desea comprar: " + p.getNombrePromocion() + "?");
+			if(ingreso.next().toUpperCase().equals(RESPUESTA_SI)) {
+				System.out.println("Acaba de comprar: " + p.getNombrePromocion());
+				// Gasta dinero, tiempo, cupo (Atracciones)
+			}	
+			System.out.println("¿Desea seguir?");
+			if(ingreso.next().toUpperCase().equals(RESPUESTA_NO)) {
+				System.out.println("Abandona for");
+				break;
+			}
+		}
+		for (Atraccion a : listaAtracciones) {
+			System.out.println("¿Desea comprar: " + a.getNombreAtraccion() + "?");
+			if(ingreso.next().toUpperCase().equals(RESPUESTA_SI)) {
+				System.out.println("Acaba de comprar: " + a.getNombreAtraccion());
+				// Gasta dinero, tiempo, cupo (Atracciones)
+			}	
+			System.out.println("¿Desea seguir?");
+			if(ingreso.next().toUpperCase().equals(RESPUESTA_NO)) {
+				System.out.println("Abandona for");
+				break;
+			}
+		}
+		ingreso.close();
+	}
 
 	public static void generarLista(String listaAImprimir) {
 		if(listaAImprimir.toLowerCase().equals("usuarios")) {

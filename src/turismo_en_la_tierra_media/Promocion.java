@@ -2,12 +2,13 @@ package turismo_en_la_tierra_media;
 
 import java.util.ArrayList;
 
-public abstract class Promocion {
+public abstract class Promocion extends Sugerible {
 
 	private String nombrePromocion;
 	private TipoPromocion tipoPromocion;
 	protected Integer costoPromocion;
 	private ArrayList<Atraccion> atracciones;
+	
 
 	// Constructor
 	public Promocion(String nombrePromocion, TipoPromocion tipoPromocion, Integer costoPromocion,
@@ -61,7 +62,6 @@ public abstract class Promocion {
 			lstNombreAtracciones.add(a.getNombreAtraccion());
 		return lstNombreAtracciones;
 	}
-
 	//--------------------------------------------------------------------------
 	
 	// Setters abstractos
@@ -70,4 +70,10 @@ public abstract class Promocion {
 
 	public abstract void setCostoPromocion();
 	//--------------------------------------------------------------------------
+	
+	@Override
+	public int compareTo(Sugerible s) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
 }
