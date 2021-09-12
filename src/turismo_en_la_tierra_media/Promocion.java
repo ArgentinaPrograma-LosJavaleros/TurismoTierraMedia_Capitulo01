@@ -17,6 +17,7 @@ public abstract class Promocion extends Sugerible {
 		setTipoPromocion(tipoPromocion);
 		this.costoPromocion = costoPromocion;
 		setAtracciones(atracciones);
+		atracciones.get(0).getTematicaAtraccion();
 	}
 
 	// Setters
@@ -73,7 +74,8 @@ public abstract class Promocion extends Sugerible {
 	
 	@Override
 	public int compareTo(Sugerible s) {
-		// TODO Auto-generated method stub
-		return 0;
+		
+		atracciones.sort(null);
+		return Integer.compare(0, 0);
 	}
 }

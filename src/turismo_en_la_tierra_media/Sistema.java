@@ -1,79 +1,85 @@
 package turismo_en_la_tierra_media;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class Sistema {
-	
+
 	private ArrayList<Usuario> usuarios;
 	private ArrayList<Atraccion> atracciones;
 	private ArrayList<Promocion> promociones;
+	private static Usuario usuarioActual;
 	private static final String RESPUESTA_SI = "SI";
 	private static final String RESPUESTA_NO = "NO";
-	
+
 	// Setters
-	//--------------------------------------------------------------------------
-	public void setUsuarios(ArrayList<Usuario> usuarios) {
-		this.usuarios = usuarios;
+	// --------------------------------------------------------------------------
+	public void setUsuarios(ArrayList<Usuario> _usuarios) {
+		usuarios = _usuarios;
 	}
-	
+
 	public void setAtracciones(ArrayList<Atraccion> atracciones) {
 		this.atracciones = atracciones;
 	}
-	
+
 	public void setPromociones(ArrayList<Promocion> promociones) {
 		this.promociones = promociones;
 	}
-	//--------------------------------------------------------------------------
 	
+	public static void logine(Usuario usuarioLogine) {
+		
+		//if(validarUsuario(Archivo.cargarUsuario(), usuarioLogine))
+			
+			
+			
+	}
+	
+	// --------------------------------------------------------------------------
+
 	// Getters
-	//--------------------------------------------------------------------------
+	// --------------------------------------------------------------------------
 	public ArrayList<Usuario> getUsuarios() {
 		return usuarios;
 	}
-	
+
 	public ArrayList<Atraccion> getAtracciones() {
 		return atracciones;
 	}
-	
+
 	public ArrayList<Promocion> getPromociones() {
 		return promociones;
 	}
-	//--------------------------------------------------------------------------
-	
-	public static boolean validarUsuario(ArrayList<Usuario> listaUsuarios, String nombreUsuario) {
-		Usuario usuarioEncontrado = null;
-		for (Usuario u : listaUsuarios)
-			if(nombreUsuario.toLowerCase().equals(u.getNombreUsuario().toLowerCase())) {
-				usuarioEncontrado = u;
-			}
-		return listaUsuarios.contains(usuarioEncontrado);
+	// --------------------------------------------------------------------------
+
+	public static Usuario validarUsuario(ArrayList<Usuario> listaUsuarios, Usuario usuario) {
+		return listaUsuarios.get(listaUsuarios.indexOf(usuario));
 	}
-	
-	public static void cargarOfertas(Usuario usuario, ArrayList<Promocion> listaPromociones, 
-			                         ArrayList<Atraccion> listaAtracciones) {
+
+	public static void cargarOfertas(Usuario usuario, ArrayList<Promocion> listaPromociones,
+			ArrayList<Atraccion> listaAtracciones) {
 		Scanner ingreso = new Scanner(System.in);
-		
+
 		for (Promocion p : listaPromociones) {
 			System.out.println("¿Desea comprar: " + p.getNombrePromocion() + "?");
-			if(ingreso.next().toUpperCase().equals(RESPUESTA_SI)) {
+			if (ingreso.next().toUpperCase().equals(RESPUESTA_SI)) {
 				System.out.println("Acaba de comprar: " + p.getNombrePromocion());
 				// Gasta dinero, tiempo, cupo (Atracciones)
-			}	
+			}
 			System.out.println("¿Desea seguir?");
-			if(ingreso.next().toUpperCase().equals(RESPUESTA_NO)) {
+			if (ingreso.next().toUpperCase().equals(RESPUESTA_NO)) {
 				System.out.println("Abandona for");
 				break;
 			}
 		}
 		for (Atraccion a : listaAtracciones) {
 			System.out.println("¿Desea comprar: " + a.getNombreAtraccion() + "?");
-			if(ingreso.next().toUpperCase().equals(RESPUESTA_SI)) {
+			if (ingreso.next().toUpperCase().equals(RESPUESTA_SI)) {
 				System.out.println("Acaba de comprar: " + a.getNombreAtraccion());
 				// Gasta dinero, tiempo, cupo (Atracciones)
-			}	
+			}
 			System.out.println("¿Desea seguir?");
-			if(ingreso.next().toUpperCase().equals(RESPUESTA_NO)) {
+			if (ingreso.next().toUpperCase().equals(RESPUESTA_NO)) {
 				System.out.println("Abandona for");
 				break;
 			}
@@ -82,36 +88,77 @@ public class Sistema {
 	}
 
 	public static void generarLista(String listaAImprimir) {
-		if(listaAImprimir.toLowerCase().equals("usuarios")) {
-			System.out.println(" _______________________________________________________________________________________ ");
-			System.out.println("|                                                                                       |");
-			System.out.println("|                                   LISTA DE USUARIOS                                   |");
-			System.out.println("|_______________________________________________________________________________________|");
+		if (listaAImprimir.toLowerCase().equals("usuarios")) {
+			System.out.println(
+					" _______________________________________________________________________________________ ");
+			System.out.println(
+					"|                                                                                       |");
+			System.out.println(
+					"|                                   LISTA DE USUARIOS                                   |");
+			System.out.println(
+					"|_______________________________________________________________________________________|");
 			for (Usuario a : Archivo.cargarUsuario()) {
 				System.out.println(a);
-				System.out.println("|---------------------------------------------------------------------------------------|");
+				System.out.println(
+						"|---------------------------------------------------------------------------------------|");
 			}
-			System.out.println("!.......................................................................................!");
-		} else if (listaAImprimir.toLowerCase().equals("atracciones")) {	
-			System.out.println(" _______________________________________________________________________________________________________________________");
-			System.out.println("|                                                                                                                       |");
-			System.out.println("|                                                   LISTA DE ATRACCIONES                                                |");
-			System.out.println("|_______________________________________________________________________________________________________________________|");
+			System.out.println(
+					"!.......................................................................................!");
+		} else if (listaAImprimir.toLowerCase().equals("atracciones")) {
+			System.out.println(
+					" _______________________________________________________________________________________________________________________");
+			System.out.println(
+					"|                                                                                                                       |");
+			System.out.println(
+					"|                                                   LISTA DE ATRACCIONES                                                |");
+			System.out.println(
+					"|_______________________________________________________________________________________________________________________|");
 			for (Atraccion a : Archivo.cargarAtracciones()) {
 				System.out.println(a);
-				System.out.println("|-----------------------------------------------------------------------------------------------------------------------|");
+				System.out.println(
+						"|-----------------------------------------------------------------------------------------------------------------------|");
 			}
-			System.out.println("!.......................................................................................................................!");
+			System.out.println(
+					"!.......................................................................................................................!");
 		} else if (listaAImprimir.toLowerCase().equals("promociones")) {
-			System.out.println(" ______________________________________________________________________________________________________________________________________________________________________________________________________");
-			System.out.println("|                                                                                                                                                                                                      |");
-			System.out.println("|                                                                                              LISTA DE PROMOCIONES                                                                                    |");
-			System.out.println("|______________________________________________________________________________________________________________________________________________________________________________________________________|");
+			System.out.println(
+					" ______________________________________________________________________________________________________________________________________________________________________________________________________");
+			System.out.println(
+					"|                                                                                                                                                                                                      |");
+			System.out.println(
+					"|                                                                                              LISTA DE PROMOCIONES                                                                                    |");
+			System.out.println(
+					"|______________________________________________________________________________________________________________________________________________________________________________________________________|");
 			for (Promocion a : Archivo.cargarPromociones(Archivo.cargarAtracciones())) {
 				System.out.println(a);
-				System.out.println("|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|");
+				System.out.println(
+						"|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|");
 			}
-			System.out.println("!......................................................................................................................................................................................................!");
-		} else { throw new Error("¡¡¡La Lista a buscar NO EXISTE!!!"); }
+			System.out.println(
+					"!......................................................................................................................................................................................................!");
+		} else {
+			throw new Error("¡¡¡La Lista a buscar NO EXISTE!!!");
+		}
 	}
+
+	public static void generarLista(ArrayList<Atraccion> listaAImprimir) {
+		System.out.println(
+				" _______________________________________________________________________________________________________________________");
+		System.out.println(
+				"|                                                                                                                       |");
+		System.out.println(
+				"|                                                   LISTA DE ATRACCIONES                                                |");
+		System.out.println(
+				"|_______________________________________________________________________________________________________________________|");
+		for (Atraccion a : listaAImprimir) {
+			System.out.println(a);
+			System.out.println(
+					"|-----------------------------------------------------------------------------------------------------------------------|");
+		}
+		System.out.println(
+				"!.......................................................................................................................!");
+
+	}
+	
+	
 }

@@ -23,29 +23,12 @@ public enum Tematica {
 				.replace('í', 'i')
 				.replace('ó', 'o')
 				.replace('ú', 'u');
-
-		if (nombre.equals("aventura"))
-			return Tematica.AVENTURA;
-
-		if (nombre.equals("degustacion"))
-			return Tematica.DEGUSTACION;
-
-		if (nombre.equals("paisaje"))
-			return Tematica.PAISAJE;
-
-		if (nombre.equals("entretenimiento"))
-			return Tematica.ENTRETENIMIENTO;
-
-		if (nombre.equals("carrera"))
-			return Tematica.CARRERA;
-
-		if (nombre.equals("extremo"))
-			return Tematica.EXTREMO;
-
-		throw new NoExisteTematicaException("La tematica \"" + nombre + "\" no existe!");
+		
+		return Tematica.valueOf(nombre.toUpperCase());
 	}
-
-	public String getNombre() {
+	
+	@Override
+	public String toString() {
 		return this.nombre;
 	}
 
