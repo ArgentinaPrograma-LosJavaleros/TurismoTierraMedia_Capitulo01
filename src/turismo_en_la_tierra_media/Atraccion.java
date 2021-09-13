@@ -75,8 +75,6 @@ public class Atraccion extends Sugerible {
 	@Override
 	public int compareTo(Sugerible s) {
 		Atraccion a = (Atraccion) s;
-		
-		
 
 		if (this.costoAtraccion < a.costoAtraccion)
 			return 1;
@@ -90,7 +88,6 @@ public class Atraccion extends Sugerible {
 		
 		if(this.tiempoAtraccion < a.tiempoAtraccion)
 			return 1;
-		
 		
 		return 0;
 	}

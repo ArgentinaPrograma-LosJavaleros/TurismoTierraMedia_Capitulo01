@@ -15,7 +15,7 @@ public class Archivo {
 	// ejecutando el código.
 	private static final String DIRECCION_ARCHIVO = System.getProperty("user.dir") + "\\archivos\\";
 
-	public static ArrayList<Usuario> cargarUsuario() {
+	public static ArrayList<Usuario> cargarUsuarios() {
 
 		ArrayList<Usuario> usuarios = new ArrayList<Usuario>();
 

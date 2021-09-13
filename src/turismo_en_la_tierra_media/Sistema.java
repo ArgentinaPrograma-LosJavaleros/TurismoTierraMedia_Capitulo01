@@ -27,12 +27,14 @@ public class Sistema {
 		this.promociones = promociones;
 	}
 	
-	public static void logine(Usuario usuarioLogine) {
-		
-		//if(validarUsuario(Archivo.cargarUsuario(), usuarioLogine))
-			
-			
-			
+	public static boolean login(ArrayList<Usuario> usuarios, Usuario usuarioLogin) {
+		try {			
+			usuarioActual = usuarios.get(usuarios.indexOf(usuarioLogin));
+		}catch(IndexOutOfBoundsException iobe) {
+			System.out.println("El usuario actual no existe");
+			return false;
+		}
+		return true;
 	}
 	
 	// --------------------------------------------------------------------------
@@ -50,16 +52,20 @@ public class Sistema {
 	public ArrayList<Promocion> getPromociones() {
 		return promociones;
 	}
+	
+	public static Usuario getUsuarioActual() {
+		return usuarioActual;
+	}
 	// --------------------------------------------------------------------------
 
-	public static Usuario validarUsuario(ArrayList<Usuario> listaUsuarios, Usuario usuario) {
-		return listaUsuarios.get(listaUsuarios.indexOf(usuario));
-	}
-
-	public static void cargarOfertas(Usuario usuario, ArrayList<Promocion> listaPromociones,
+	public static void cargarOfertas(ArrayList<Promocion> listaPromociones,
 			ArrayList<Atraccion> listaAtracciones) {
 		Scanner ingreso = new Scanner(System.in);
+		
+		Usuario u = Sistema.getUsuarioActual();
 
+		Tematica tematica = u.getPreferenciaUsuario();
+		
 		for (Promocion p : listaPromociones) {
 			System.out.println("¿Desea comprar: " + p.getNombrePromocion() + "?");
 			if (ingreso.next().toUpperCase().equals(RESPUESTA_SI)) {
@@ -87,6 +93,42 @@ public class Sistema {
 		ingreso.close();
 	}
 
+	public static ArrayList<Atraccion> ordenarAtraccionSegunTematica(ArrayList<Atraccion> lista){
+		
+		Tematica tematica = Sistema.getUsuarioActual().getPreferenciaUsuario();
+
+		ArrayList<Atraccion> a = new ArrayList<Atraccion>();
+		for (Atraccion s : lista) {
+			if(s.getTematicaAtraccion().equals(tematica))
+				a.add(s);
+			
+		}
+		
+		lista.removeAll(a);
+		a.addAll(lista);
+		
+		return a;
+	}
+	
+	public static ArrayList<Promocion> ordenarPromocionSegunTematica(ArrayList<Promocion> lista){
+		
+		
+		Tematica tematica = Sistema.getUsuarioActual().getPreferenciaUsuario();
+
+		
+		ArrayList<Promocion> a = new ArrayList<Promocion>();
+		for (Promocion s : lista) {
+			
+			if(s.getAtracciones().get(0).getTematicaAtraccion().equals(tematica))
+				a.add(s);
+			
+		}
+		
+		lista.removeAll(a);
+		a.addAll(lista);
+		return a;
+	}
+	
 	public static void generarLista(String listaAImprimir) {
 		if (listaAImprimir.toLowerCase().equals("usuarios")) {
 			System.out.println(
@@ -97,7 +139,7 @@ public class Sistema {
 					"|                                   LISTA DE USUARIOS                                   |");
 			System.out.println(
 					"|_______________________________________________________________________________________|");
-			for (Usuario a : Archivo.cargarUsuario()) {
+			for (Usuario a : Archivo.cargarUsuarios()) {
 				System.out.println(a);
 				System.out.println(
 						"|---------------------------------------------------------------------------------------|");
@@ -141,23 +183,42 @@ public class Sistema {
 		}
 	}
 
-	public static void generarLista(ArrayList<Atraccion> listaAImprimir) {
+//	public static void generarLista(ArrayList<Atraccion> listaAImprimir) {
+//		System.out.println(
+//				" _______________________________________________________________________________________________________________________");
+//		System.out.println(
+//				"|                                                                                                                       |");
+//		System.out.println(
+//				"|                                                   LISTA DE ATRACCIONES                                                |");
+//		System.out.println(
+//				"|_______________________________________________________________________________________________________________________|");
+//		for (Atraccion a : listaAImprimir) {
+//			System.out.println(a);
+//			System.out.println(
+//					"|-----------------------------------------------------------------------------------------------------------------------|");
+//		}
+//		System.out.println(
+//				"!.......................................................................................................................!");
+//
+//	}
+	
+	public static void generarLista(ArrayList<Promocion> listaAImprimir) {
 		System.out.println(
-				" _______________________________________________________________________________________________________________________");
+				" ______________________________________________________________________________________________________________________________________________________________________________________________________");
 		System.out.println(
-				"|                                                                                                                       |");
+				"|                                                                                                                                                                                                      |");
 		System.out.println(
-				"|                                                   LISTA DE ATRACCIONES                                                |");
+				"|                                                                                              LISTA DE PROMOCIONES                                                                                    |");
 		System.out.println(
-				"|_______________________________________________________________________________________________________________________|");
-		for (Atraccion a : listaAImprimir) {
+				"|______________________________________________________________________________________________________________________________________________________________________________________________________|");
+		for (Promocion a : listaAImprimir) {
 			System.out.println(a);
 			System.out.println(
-					"|-----------------------------------------------------------------------------------------------------------------------|");
+					"|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|");
 		}
 		System.out.println(
-				"!.......................................................................................................................!");
-
+				"!......................................................................................................................................................................................................!");
+	
 	}
 	
 	

@@ -3,15 +3,30 @@ package turismo_en_la_tierra_media;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.Collections;
-import java.util.ArrayList;
-import java.util.Arrays;
-//import java.util.ArrayList;
-//import java.util.ArrayList;
 import java.util.Scanner;
+import java.util.ArrayList;
+
 
 public class App {
 	
+	
 	public static void main(String[] args) throws FileNotFoundException, IOException {
+		
+		ArrayList<Usuario> listaUsuarios = Archivo.cargarUsuarios();
+		
+		boolean existe = false;
+		Scanner input = new Scanner(System.in);
+		
+		do {
+			System.out.print("Ingrese su Nombre de Usuario: ");
+			String nombre = input.nextLine();
+			existe = Sistema.login(listaUsuarios, new Usuario(nombre));
+		}while(!existe);
+		
+		
+		System.out.println(Sistema.getUsuarioActual());
+		
+		
 		/*String nombreUsuario;
 		Scanner ingreso = new Scanner(System.in);
 		
@@ -40,17 +55,15 @@ public class App {
 //		b.add("Moria");
 //
 //		System.out.println(Archivo.generarTicket(new Ticket("Juani", 100, 20, b, b), true));
-//		System.out.println(Archivo.generarTicket(new Ticket("Camila", 150, 30, b, b), true));
+//		System.out.println(Archivo.genesrarTicket(new Ticket("Camila", 150, 30, b, b), true));
 //		// Limpia y reescribe
 //		System.out.println(Archivo.generarTicket(new Ticket("Jorge", 130, 10, b, b), false));
 //		System.out.println(Archivo.generarTicket(new Ticket("Camila", 150, 30, b, b), true));
 		
-		ArrayList<Atraccion> arr = Archivo.cargarAtracciones();
-		Sistema.generarLista("atracciones");
+		ArrayList<Promocion> arr = Archivo.cargarPromociones(Archivo.cargarAtracciones());
 		System.out.println("");
 		Collections.sort(arr);
-		Sistema.generarLista(arr);
-		System.out.println(Sistema.validarUsuario(Archivo.cargarUsuario(), new Usuario("Profe Lucas", null, null, null)));
+		Sistema.generarLista(Sistema.ordenarPromocionSegunTematica(arr));
 	}
 
 }

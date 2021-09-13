@@ -8,6 +8,7 @@ public abstract class Promocion extends Sugerible {
 	private TipoPromocion tipoPromocion;
 	protected Integer costoPromocion;
 	private ArrayList<Atraccion> atracciones;
+	private Double tiempo;
 	
 
 	// Constructor
@@ -17,7 +18,8 @@ public abstract class Promocion extends Sugerible {
 		setTipoPromocion(tipoPromocion);
 		this.costoPromocion = costoPromocion;
 		setAtracciones(atracciones);
-		atracciones.get(0).getTematicaAtraccion();
+		this.tiempo = 0.0;
+		this.setTiempo();
 	}
 
 	// Setters
@@ -36,6 +38,12 @@ public abstract class Promocion extends Sugerible {
 	
 	public void setAtracciones(ArrayList<Atraccion> atracciones) {
 		this.atracciones = atracciones;
+	}
+	
+	private void setTiempo() {
+		for(Atraccion a: this.getAtracciones())
+			this.tiempo += a.getTiempoAtraccion();
+		
 	}
 	//--------------------------------------------------------------------------
 	
@@ -63,6 +71,10 @@ public abstract class Promocion extends Sugerible {
 			lstNombreAtracciones.add(a.getNombreAtraccion());
 		return lstNombreAtracciones;
 	}
+	
+	public Double getTiempo() {
+		return this.tiempo;
+	}
 	//--------------------------------------------------------------------------
 	
 	// Setters abstractos
@@ -74,8 +86,21 @@ public abstract class Promocion extends Sugerible {
 	
 	@Override
 	public int compareTo(Sugerible s) {
+		Promocion p = (Promocion) s;
+
+		if (this.costoPromocion < p.costoPromocion)
+			return 1;
 		
-		atracciones.sort(null);
-		return Integer.compare(0, 0);
+		if (this.costoPromocion > p.costoPromocion) {
+			return -1;
+		}
+		
+		if(this.tiempo > p.tiempo)
+			return -1;
+		
+		if(this.tiempo < p.tiempo)
+			return 1;
+		
+		return 0;
 	}
 }

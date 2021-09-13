@@ -7,13 +7,17 @@ public class Usuario {
 	private Double tiempoDisponible;
 	private Tematica preferenciaUsuario;
 
-	// Constructor
+	// Constructores
 	public Usuario(String nombreUsuario, Integer cantidadMonedas, Double tiempoDisponible,
 			Tematica preferenciaUsuario) {
 		setNombreUsuario(nombreUsuario);
 		setCantidadMonedas(cantidadMonedas);
 		setTiempoDisponible(tiempoDisponible);
 		setPreferenciaUsuario(preferenciaUsuario);
+	}
+	
+	public Usuario(String nombreUsuario) {
+		this(nombreUsuario, null, null, null);
 	}
 	
 	// Setters
@@ -87,7 +91,7 @@ public class Usuario {
 		if (nombreUsuario == null) {
 			if (other.nombreUsuario != null)
 				return false;
-		} else if (!nombreUsuario.equals(other.nombreUsuario))
+		} else if (!nombreUsuario.toLowerCase().equals(other.nombreUsuario.toLowerCase()))
 			return false;
 		return true;
 	}
