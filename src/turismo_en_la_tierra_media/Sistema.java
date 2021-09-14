@@ -77,7 +77,6 @@ public class Sistema {
 				}
 				System.out.println("¿Desea seguir?");
 				if (ingreso.next().toUpperCase().equals(RESPUESTA_NO)) {
-					System.out.println("Abandona for");
 					break;
 				}
 			}
@@ -91,7 +90,6 @@ public class Sistema {
 				}
 				System.out.println("¿Desea seguir?");
 				if (ingreso.next().toUpperCase().equals(RESPUESTA_NO)) {
-					System.out.println("Abandona for");
 					break;
 				}
 			}
