@@ -58,7 +58,8 @@ public class Atraccion extends Sugerible {
 		return cupoUsuarios;
 	}
 
-	public Tematica getTematicaAtraccion() {
+	@Override
+	public Tematica getTematica() {
 		return tematicaAtraccion;
 	}
 	// --------------------------------------------------------------------------
@@ -68,7 +69,7 @@ public class Atraccion extends Sugerible {
 		System.out.printf(
 				"| Nombre = %-35s" + "| Costo = %-5d" + "| Tiempo = %-5.1f" + "| Cupo = %-5d" + "| Temática = %-15s |",
 				getNombreAtraccion(), getCostoAtraccion(), getTiempoAtraccion(), getCupoUsuarios(),
-				getTematicaAtraccion());
+				getTematica());
 		return "";
 	}
 

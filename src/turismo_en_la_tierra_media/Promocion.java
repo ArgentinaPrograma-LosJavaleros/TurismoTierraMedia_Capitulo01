@@ -75,6 +75,11 @@ public abstract class Promocion extends Sugerible {
 	public Double getTiempo() {
 		return this.tiempo;
 	}
+	
+	@Override
+	public Tematica getTematica() {
+		return atracciones.get(0).getTematica();
+	}
 	//--------------------------------------------------------------------------
 	
 	// Setters abstractos

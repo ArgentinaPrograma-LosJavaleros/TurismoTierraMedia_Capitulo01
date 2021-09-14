@@ -55,9 +55,9 @@ public class Archivo {
 		return usuarios;
 	}
 
-	public static ArrayList<Atraccion> cargarAtracciones() {
+	public static ArrayList<Sugerible> cargarAtracciones() {
 
-		ArrayList<Atraccion> atracciones = new ArrayList<Atraccion>();
+		ArrayList<Sugerible> atracciones = new ArrayList<Sugerible>();
 
 		Scanner sc = null;
 
@@ -96,9 +96,9 @@ public class Archivo {
 		return atracciones;
 	}
 
-	public static ArrayList<Promocion> cargarPromociones(ArrayList<Atraccion> atracciones) {
+	public static ArrayList<Sugerible> cargarPromociones(ArrayList<Sugerible> atracciones) {
 
-		ArrayList<Promocion> promociones = new ArrayList<Promocion>();
+		ArrayList<Sugerible> promociones = new ArrayList<Sugerible>();
 
 		Scanner sc = null;
 
@@ -170,14 +170,14 @@ public class Archivo {
 		return sc;
 	}
 
-	private static Atraccion getAtraccion(String nombre, ArrayList<Atraccion> atracciones)
+	private static Atraccion getAtraccion(String nombre, ArrayList<Sugerible> atracciones)
 			throws NoExisteAtraccionException {
 	
 		// Compara si la atracción ingresada existe en la lista de atracciones.
-		for (Atraccion a : atracciones) {
-			String s = a.getNombreAtraccion();
+		for (Sugerible a : atracciones) {
+			String s = ((Atraccion)a).getNombreAtraccion();
 			if (s.toLowerCase().equals(nombre.replace("_", " ").toLowerCase()))
-				return a;
+				return (Atraccion)a;
 		}
 
 		throw new NoExisteAtraccionException("NO existe la atraccion \"" + nombre + "\"");

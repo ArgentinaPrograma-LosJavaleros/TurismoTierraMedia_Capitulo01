@@ -59,11 +59,11 @@ public class App {
 //		// Limpia y reescribe
 //		System.out.println(Archivo.generarTicket(new Ticket("Jorge", 130, 10, b, b), false));
 //		System.out.println(Archivo.generarTicket(new Ticket("Camila", 150, 30, b, b), true));
-		
-		ArrayList<Promocion> arr = Archivo.cargarPromociones(Archivo.cargarAtracciones());
+	
+		ArrayList<Sugerible> arr = Archivo.cargarAtracciones();
 		System.out.println("");
-		Collections.sort(arr);
-		Sistema.generarLista(Sistema.ordenarPromocionSegunTematica(arr));
+		Collections.sort(arr, new OrdenadorPorTematica());
+		Sistema.generarLista(arr);
 	}
 
 }

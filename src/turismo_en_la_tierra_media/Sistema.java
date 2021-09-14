@@ -99,7 +99,7 @@ public class Sistema {
 
 		ArrayList<Atraccion> a = new ArrayList<Atraccion>();
 		for (Atraccion s : lista) {
-			if(s.getTematicaAtraccion().equals(tematica))
+			if(s.getTematica().equals(tematica))
 				a.add(s);
 			
 		}
@@ -119,7 +119,7 @@ public class Sistema {
 		ArrayList<Promocion> a = new ArrayList<Promocion>();
 		for (Promocion s : lista) {
 			
-			if(s.getAtracciones().get(0).getTematicaAtraccion().equals(tematica))
+			if(s.getAtracciones().get(0).getTematica().equals(tematica))
 				a.add(s);
 			
 		}
@@ -155,7 +155,7 @@ public class Sistema {
 					"|                                                   LISTA DE ATRACCIONES                                                |");
 			System.out.println(
 					"|_______________________________________________________________________________________________________________________|");
-			for (Atraccion a : Archivo.cargarAtracciones()) {
+			for (Sugerible a : Archivo.cargarAtracciones()) {
 				System.out.println(a);
 				System.out.println(
 						"|-----------------------------------------------------------------------------------------------------------------------|");
@@ -171,7 +171,7 @@ public class Sistema {
 					"|                                                                                              LISTA DE PROMOCIONES                                                                                    |");
 			System.out.println(
 					"|______________________________________________________________________________________________________________________________________________________________________________________________________|");
-			for (Promocion a : Archivo.cargarPromociones(Archivo.cargarAtracciones())) {
+			for (Sugerible a : Archivo.cargarPromociones(Archivo.cargarAtracciones())) {
 				System.out.println(a);
 				System.out.println(
 						"|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|");
@@ -202,7 +202,7 @@ public class Sistema {
 //
 //	}
 	
-	public static void generarLista(ArrayList<Promocion> listaAImprimir) {
+	public static void generarLista(ArrayList<Sugerible> listaAImprimir) {
 		System.out.println(
 				" ______________________________________________________________________________________________________________________________________________________________________________________________________");
 		System.out.println(
@@ -211,7 +211,7 @@ public class Sistema {
 				"|                                                                                              LISTA DE PROMOCIONES                                                                                    |");
 		System.out.println(
 				"|______________________________________________________________________________________________________________________________________________________________________________________________________|");
-		for (Promocion a : listaAImprimir) {
+		for (Sugerible a : listaAImprimir) {
 			System.out.println(a);
 			System.out.println(
 					"|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|");
