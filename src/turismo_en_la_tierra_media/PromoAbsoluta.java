@@ -6,27 +6,16 @@ public class PromoAbsoluta extends Promocion {
 
 	// Constructor
 	public PromoAbsoluta(String nombreAtraccion, Integer costoPromocion, ArrayList<Atraccion> atracciones) {
-		super(nombreAtraccion, TipoPromocion.ABSOLUTA, 0, atracciones);
-		this.setCostoPromocion(costoPromocion);
+		super(nombreAtraccion, TipoPromocion.ABSOLUTA, atracciones);
+		super.setCosto(costoPromocion);
 	}
-
-	// Setters
-	//--------------------------------------------------------------------------
-	@Override
-	public void setCostoPromocion(Integer costoPromocion) {
-		super.costoPromocion = costoPromocion;
-	}
-
-	@Override
-	public void setCostoPromocion() {}
-	//--------------------------------------------------------------------------
 	
 	// Getter
 	//----------------------------------------------
 	public Integer getCostoAnterior() {
 		double suma = 0.0;
 		for (Atraccion a : super.getAtracciones()) {
-			suma += a.getCostoAtraccion();
+			suma += a.getCosto();
 		}
 		return (int) Math.ceil(suma);
 	}
@@ -39,10 +28,10 @@ public class PromoAbsoluta extends Promocion {
 		                + "| Costo Anterior = %-31d"
 		                + "| Precio Final = %-5d"
 		                + "| Tipo = %-10s |", 
-		                getNombrePromocion(),
+		                super.getNombre(),
 		                getNombreAtracciones(),
 		                getCostoAnterior(),
-		                getCostoPromocion(),
+		                super.getCosto(),
 		                getTipoPromocion());
 		return "";
 	}

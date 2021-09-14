@@ -3,21 +3,18 @@ package turismo_en_la_tierra_media;
 import java.util.ArrayList;
 
 public abstract class Promocion extends Sugerible {
-
-	private String nombrePromocion;
-	private TipoPromocion tipoPromocion;
-	protected Integer costoPromocion;
-	private ArrayList<Atraccion> atracciones;
-	private Double tiempo;
 	
+	private TipoPromocion tipoPromocion;
+	private ArrayList<Atraccion> atracciones;
 
 	// Constructor
-	public Promocion(String nombrePromocion, TipoPromocion tipoPromocion, Integer costoPromocion,
+	public Promocion(String nombrePromocion, TipoPromocion tipoPromocion,
 			ArrayList<Atraccion> atracciones) {
 		setNombrePromocion(nombrePromocion);
 		setTipoPromocion(tipoPromocion);
-		this.costoPromocion = costoPromocion;
 		setAtracciones(atracciones);
+		this.costo = 0;
+		setCosto();
 		this.tiempo = 0.0;
 		this.setTiempo();
 	}
@@ -25,7 +22,7 @@ public abstract class Promocion extends Sugerible {
 	// Setters
 	//--------------------------------------------------------------------------
 	public void setNombrePromocion(String nombreAtraccion) {
-		this.nombrePromocion = nombreAtraccion;
+		this.nombre = nombreAtraccion;
 	}
 	
 	public void setTipoPromocion(TipoPromocion tipoPromocion) {
@@ -40,23 +37,22 @@ public abstract class Promocion extends Sugerible {
 		this.atracciones = atracciones;
 	}
 	
-	private void setTiempo() {
+	protected void setTiempo() {
 		for(Atraccion a: this.getAtracciones())
-			this.tiempo += a.getTiempoAtraccion();
-		
+			super.tiempo += a.getTiempo();
+	}
+	
+	protected void setCosto() {
+		// Suma el costo de las atracciones
+		for (Atraccion a :	this.getAtracciones()) {
+			super.setCosto(super.getCosto() + a.getCosto());
+		}
 	}
 	//--------------------------------------------------------------------------
 	
 	// Getters
 	//--------------------------------------------------------------------------
-	public Integer getCostoPromocion() {
-		return costoPromocion;
-	}
 	
-	public String getNombrePromocion() {
-		return nombrePromocion;
-	}
-
 	public TipoPromocion getTipoPromocion() {
 		return tipoPromocion;
 	}
@@ -68,12 +64,8 @@ public abstract class Promocion extends Sugerible {
 	public ArrayList<String> getNombreAtracciones() {
 		ArrayList<String> lstNombreAtracciones = new ArrayList<String>();
 		for (Atraccion a : this.getAtracciones())
-			lstNombreAtracciones.add(a.getNombreAtraccion());
+			lstNombreAtracciones.add(a.getNombre());
 		return lstNombreAtracciones;
-	}
-	
-	public Double getTiempo() {
-		return this.tiempo;
 	}
 	
 	@Override
@@ -82,21 +74,14 @@ public abstract class Promocion extends Sugerible {
 	}
 	//--------------------------------------------------------------------------
 	
-	// Setters abstractos
-	//--------------------------------------------------------------------------
-	public abstract void setCostoPromocion(Integer costoPromocion);
-
-	public abstract void setCostoPromocion();
-	//--------------------------------------------------------------------------
-	
 	@Override
 	public int compareTo(Sugerible s) {
 		Promocion p = (Promocion) s;
 
-		if (this.costoPromocion < p.costoPromocion)
+		if (this.costo < p.costo)
 			return 1;
 		
-		if (this.costoPromocion > p.costoPromocion) {
+		if (this.costo > p.costo) {
 			return -1;
 		}
 		

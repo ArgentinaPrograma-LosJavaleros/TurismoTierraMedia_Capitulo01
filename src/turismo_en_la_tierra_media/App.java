@@ -17,31 +17,46 @@ public class App {
 		boolean existe = false;
 		Scanner input = new Scanner(System.in);
 		
-		do {
-			System.out.print("Ingrese su Nombre de Usuario: ");
-			String nombre = input.nextLine();
-			existe = Sistema.login(listaUsuarios, new Usuario(nombre));
-		}while(!existe);
+		Sistema.setUsuarios(Archivo.cargarUsuarios());
+		System.out.println("");
+		Collections.sort(Sistema.getUsuarios());
+		Sistema.mostrarUsuarios();
+		
+		Sistema.setAtracciones(Archivo.cargarAtracciones());
+		Sistema.setPromociones(Archivo.cargarPromociones());
+
+		while(true) {
+			
+			do {
+				System.out.print("Ingrese su Nombre de Usuario: ");
+				String nombre = input.nextLine();
+				existe = Sistema.login(listaUsuarios, new Usuario(nombre));
+			}while(!existe);
 		
 		
-		System.out.println(Sistema.getUsuarioActual());
+			
+			System.out.println("");
+			Collections.sort(Sistema.getAtracciones(), new OrdenadorPorTematica());
+			Sistema.mostrarAtracciones();
+			
+			System.out.println("");
+			Collections.sort(Sistema.getPromociones(), new OrdenadorPorTematica());
+			Sistema.mostrarPromociones();
+			
+			Sistema.cargarOfertas();	
+
+			break;
+		}
+		input.close();
 		
 		
-		/*String nombreUsuario;
-		Scanner ingreso = new Scanner(System.in);
 		
-		do {
-			System.out.print("Ingrese su Nombre de Usuario: ");	
-			nombreUsuario = ingreso.nextLine();
-		} while(!Sistema.validarUsuario(Archivo.cargarUsuario(), nombreUsuario));
 		
-		System.out.println("Hola " + nombreUsuario);
-		Sistema.cargarOfertas(null, Archivo.cargarPromociones(Archivo.cargarAtracciones()), Archivo.cargarAtracciones());
+//		System.out.println("Hola " + nombreUsuario);
+//		Sistema.cargarOfertas(null, Archivo.cargarPromociones(Archivo.cargarAtracciones()), Archivo.cargarAtracciones());
 //		System.out.println();
 //		System.out.println();
 //		System.out.println();
-		
-		ingreso.close();*/
 		
 //		System.out.println(Archivo.cargarAtracciones());
 //		System.out.println(Archivo.cargarUsuario());
@@ -60,10 +75,8 @@ public class App {
 //		System.out.println(Archivo.generarTicket(new Ticket("Jorge", 130, 10, b, b), false));
 //		System.out.println(Archivo.generarTicket(new Ticket("Camila", 150, 30, b, b), true));
 	
-		ArrayList<Sugerible> arr = Archivo.cargarAtracciones();
-		System.out.println("");
-		Collections.sort(arr, new OrdenadorPorTematica());
-		Sistema.generarLista(arr);
+		
+		
 	}
 
 }

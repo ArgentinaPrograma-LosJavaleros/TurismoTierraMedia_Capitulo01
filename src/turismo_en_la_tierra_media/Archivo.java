@@ -55,9 +55,9 @@ public class Archivo {
 		return usuarios;
 	}
 
-	public static ArrayList<Sugerible> cargarAtracciones() {
+	public static ArrayList<Atraccion> cargarAtracciones() {
 
-		ArrayList<Sugerible> atracciones = new ArrayList<Sugerible>();
+		ArrayList<Atraccion> atracciones = new ArrayList<Atraccion>();
 
 		Scanner sc = null;
 
@@ -96,9 +96,9 @@ public class Archivo {
 		return atracciones;
 	}
 
-	public static ArrayList<Sugerible> cargarPromociones(ArrayList<Sugerible> atracciones) {
+	public static ArrayList<Promocion> cargarPromociones() {
 
-		ArrayList<Sugerible> promociones = new ArrayList<Sugerible>();
+		ArrayList<Promocion> promociones = new ArrayList<Promocion>();
 
 		Scanner sc = null;
 
@@ -123,8 +123,8 @@ public class Archivo {
 
 				// Si existen, añade las dos atracciones de la promoción al arraylist,
 				// reemplazando el guión bajo con un espacio.
-				atraccionesPromocion.add(getAtraccion(valores[3].replace('_', ' '), atracciones));
-				atraccionesPromocion.add(getAtraccion(valores[4].replace('_', ' '), atracciones));
+				atraccionesPromocion.add(getAtraccion(valores[3].replace('_', ' ')));
+				atraccionesPromocion.add(getAtraccion(valores[4].replace('_', ' ')));
 
 				// Las siguientes condicionales crean una promoción según lo que lea del
 				// archivo.
@@ -141,7 +141,7 @@ public class Archivo {
 				}
 
 				if (promo.equals(TipoPromocion.AXB)) {
-					Atraccion atraccionGratis = getAtraccion(valores[2], atracciones);
+					Atraccion atraccionGratis = getAtraccion(valores[2]);
 					promociones.add(new PromoAxB(valores[0], atraccionGratis, atraccionesPromocion));
 				}
 			}
@@ -170,14 +170,14 @@ public class Archivo {
 		return sc;
 	}
 
-	private static Atraccion getAtraccion(String nombre, ArrayList<Sugerible> atracciones)
+	private static Atraccion getAtraccion(String nombre)
 			throws NoExisteAtraccionException {
 	
 		// Compara si la atracción ingresada existe en la lista de atracciones.
-		for (Sugerible a : atracciones) {
-			String s = ((Atraccion)a).getNombreAtraccion();
+		for (Atraccion a : Sistema.getAtracciones()) {
+			String s = (a).getNombre();
 			if (s.toLowerCase().equals(nombre.replace("_", " ").toLowerCase()))
-				return (Atraccion)a;
+				return a;
 		}
 
 		throw new NoExisteAtraccionException("NO existe la atraccion \"" + nombre + "\"");

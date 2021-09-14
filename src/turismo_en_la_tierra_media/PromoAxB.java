@@ -8,9 +8,9 @@ public class PromoAxB extends Promocion {
 
 	// Constructor
 	public PromoAxB(String nombreAtraccion, Atraccion atraccionGratis, ArrayList<Atraccion> atracciones) {
-		super(nombreAtraccion, TipoPromocion.AXB, 0, atracciones);
-		this.setCostoPromocion();
+		super(nombreAtraccion, TipoPromocion.AXB, atracciones);
 		this.setAtraccionGratis(atraccionGratis);
+		super.tiempo += this.atraccionGratis.getTiempo();
 	}
 
 	// Setters
@@ -18,26 +18,16 @@ public class PromoAxB extends Promocion {
 	public void setAtraccionGratis(Atraccion atraccionGratis) {
 		this.atraccionGratis = atraccionGratis;
 	}
-
-	@Override
-	public void setCostoPromocion(Integer costoPromocion) {
-		super.costoPromocion = costoPromocion;
-	}
-
-	@Override
-	public void setCostoPromocion() {
-		double suma = 0.0;
-		
-		// Suma el costo de las atracciones
-		for (Atraccion a : super.getAtracciones()) {
-			suma += a.getCostoAtraccion();
-		}
-		
-		// Redondea al mayor posible
-		super.costoPromocion = (int) Math.ceil(suma);
-	}
+	
+//	@Override
+//	protected void setTiempo() {
+//		super.setTiempo();
+//		
+//	}
+	
 	//--------------------------------------------------------------------------
 	
+
 	// Getters
 	//--------------------------------------------------------------------------
 	public Atraccion getAtraccionGratis() {
@@ -53,10 +43,10 @@ public class PromoAxB extends Promocion {
                         + "| Atracción gratis = %-29s"
                         + "| Precio Final = %-5d"
                         + "| Tipo = %-10s |", 
-                        getNombrePromocion(),
+                        super.getNombre(),
                         getNombreAtracciones(),
-                        getAtraccionGratis().getNombreAtraccion(),
-                        getCostoPromocion(),
+                        getAtraccionGratis().getNombre(),
+                        super.getCosto(),
                         getTipoPromocion());
 		return "";
 	}

@@ -1,20 +1,26 @@
 package turismo_en_la_tierra_media;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Ticket {
 	
 	private String comprador;
-	private Integer monedasGastadas, tiempoGastado;
+	private Integer monedasGastadas; 
+	private Double tiempoGastado;
 	private List<String> atraccionesReservadas, promocionesReservadas;
 	
-	public Ticket(String comprador, Integer monedasGastadas, Integer tiempoGastado, List<String> atraccionesReservadas,
+	public Ticket(String comprador, Integer monedasGastadas, Double tiempoGastado, List<String> atraccionesReservadas,
 			List<String> promocionesReservadas) {
 		setComprador(comprador);
 		setMonedasGastadas(monedasGastadas);
 		setTiempoGastado(tiempoGastado);
 		setAtraccionesReservadas(atraccionesReservadas);
 		setPromocionesReservadas(promocionesReservadas);
+	}
+	
+	public Ticket() {
+		this(Sistema.getUsuarioActual().getNombre(), 0, 0.0, new ArrayList<String>(), new ArrayList<String>());
 	}
 
 	// Setters
@@ -27,7 +33,7 @@ public class Ticket {
 		this.monedasGastadas = monedasGastadas;
 	}
 	
-	public void setTiempoGastado(Integer tiempoGastado) {
+	public void setTiempoGastado(Double tiempoGastado) {
 		this.tiempoGastado = tiempoGastado;
 	}
 	
@@ -58,7 +64,7 @@ public class Ticket {
 		return monedasGastadas;
 	}
 	
-	public Integer getTiempoGastado() {
+	public Double getTiempoGastado() {
 		return tiempoGastado;
 	}
 	

@@ -1,6 +1,6 @@
 package turismo_en_la_tierra_media;
 
-public class Usuario {
+public class Usuario implements Comparable<Usuario>{
 
 	private String nombreUsuario;
 	private Integer cantidadMonedas;
@@ -45,7 +45,7 @@ public class Usuario {
 		return preferenciaUsuario;
 	}
 	
-	public String getNombreUsuario() {
+	public String getNombre() {
 		return nombreUsuario;
 	}
 	
@@ -64,7 +64,7 @@ public class Usuario {
 				        + "| Monedas = %-5d"
 				        + "| Tiempo = %-5.1f"
 				        + "| Preferencia = %-15s |", 
-				        getNombreUsuario(), 
+				        getNombre(), 
 				        getCantidadMonedas(), 
 				        getTiempoDisponible(), 
 				        getPreferenciaUsuario());
@@ -96,8 +96,35 @@ public class Usuario {
 		return true;
 	}
 
+	@Override
+	public int compareTo(Usuario o) {
+		return this.getNombre().compareTo(o.getNombre());
+	}
+
 	
-	
+	public void comprar(Sugerible producto, Ticket ticket) {
+		
+		this.setCantidadMonedas(this.cantidadMonedas - producto.getCosto());
+		this.setTiempoDisponible(this.tiempoDisponible - producto.getTiempo());
+		
+		ticket.setMonedasGastadas(ticket.getMonedasGastadas() + producto.getCosto());
+		ticket.setTiempoGastado(ticket.getTiempoGastado() + producto.getTiempo());
+		
+		if(producto.getClass().equals(Atraccion.class)) {
+			ticket.setAtraccionesReservadas(producto.getNombre());
+			((Atraccion)producto).setCupoUsuarios(((Atraccion)producto).getCupoUsuarios() - 1);
+		} else {
+			if(producto.getClass().equals(PromoAxB.class)) {
+				((PromoAxB)producto).getAtraccionGratis().setCupoUsuarios(((PromoAxB)producto).getAtraccionGratis().getCupoUsuarios() - 1);
+			}
+			ticket.setPromocionesReservadas(producto.getNombre());
+			
+			for(Atraccion a : ((Promocion)producto).getAtracciones()) {
+				a.setCupoUsuarios(a.getCupoUsuarios() - 1);
+			}
+		}
+		
+	}
 	
 	
 }
