@@ -6,34 +6,19 @@ public class PromoAxB extends Promocion {
 
 	private Atraccion atraccionGratis;
 
-	// Constructor
 	public PromoAxB(String nombreAtraccion, Atraccion atraccionGratis, ArrayList<Atraccion> atracciones) {
 		super(nombreAtraccion, TipoPromocion.AXB, atracciones);
 		this.setAtraccionGratis(atraccionGratis);
 		super.tiempo += this.atraccionGratis.getTiempo();
 	}
 
-	// Setters
-	//--------------------------------------------------------------------------
 	public void setAtraccionGratis(Atraccion atraccionGratis) {
 		this.atraccionGratis = atraccionGratis;
 	}
-	
-//	@Override
-//	protected void setTiempo() {
-//		super.setTiempo();
-//		
-//	}
-	
-	//--------------------------------------------------------------------------
-	
 
-	// Getters
-	//--------------------------------------------------------------------------
 	public Atraccion getAtraccionGratis() {
 		return atraccionGratis;
 	}
-	//--------------------------------------------------------------------------
 
 	@Override
 	public String toString() {

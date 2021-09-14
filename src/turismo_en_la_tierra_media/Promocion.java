@@ -10,7 +10,7 @@ public abstract class Promocion extends Sugerible {
 	// Constructor
 	public Promocion(String nombrePromocion, TipoPromocion tipoPromocion,
 			ArrayList<Atraccion> atracciones) {
-		setNombrePromocion(nombrePromocion);
+		setNombre(nombrePromocion);
 		setTipoPromocion(tipoPromocion);
 		setAtracciones(atracciones);
 		this.costo = 0;
@@ -21,10 +21,6 @@ public abstract class Promocion extends Sugerible {
 
 	// Setters
 	//--------------------------------------------------------------------------
-	public void setNombrePromocion(String nombreAtraccion) {
-		this.nombre = nombreAtraccion;
-	}
-	
 	public void setTipoPromocion(TipoPromocion tipoPromocion) {
 		this.tipoPromocion = tipoPromocion;
 	}

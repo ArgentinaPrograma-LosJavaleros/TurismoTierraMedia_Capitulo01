@@ -32,8 +32,6 @@ public class App {
 				String nombre = input.nextLine();
 				existe = Sistema.login(listaUsuarios, new Usuario(nombre));
 			}while(!existe);
-		
-		
 			
 			System.out.println("");
 			Collections.sort(Sistema.getAtracciones(), new OrdenadorPorTematica());
@@ -43,7 +41,7 @@ public class App {
 			Collections.sort(Sistema.getPromociones(), new OrdenadorPorTematica());
 			Sistema.mostrarPromociones();
 			
-			Sistema.cargarOfertas();	
+			Sistema.cargarOfertas();
 
 			break;
 		}

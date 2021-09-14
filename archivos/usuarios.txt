@@ -6,7 +6,7 @@ Ignacio 150 3.0 Paisaje
 Joaquin 80 5.0 Degustacion
 Juani 100 2.0 Extremo
 Camila 50 2.0 Degustacion
-Lucas 200 8.0 Extremo
+Lucas 2000 8.0 Extremo
 Dark_Knight 170 10.0 Paisaje
 Laureana 85 4.0 Entretenimiento
 Profe_Leo 2000 10.0 Aventura 

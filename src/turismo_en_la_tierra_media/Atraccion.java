@@ -4,7 +4,6 @@ public class Atraccion extends Sugerible {
 
 	private Integer cupoUsuarios;
 
-	// Constructor
 	public Atraccion(String nombreAtraccion, Integer costoAtraccion, Double tiempoAtraccion, Integer cupoUsuarios,
 			Tematica tematicaAtraccion) {
 		super.setNombre(nombreAtraccion);
@@ -14,21 +13,13 @@ public class Atraccion extends Sugerible {
 		setCupoUsuarios(cupoUsuarios);
 	}
 
-	// Setters
-	// --------------------------------------------------------------------------
 	public void setCupoUsuarios(Integer cupoUsuarios) {
 		this.cupoUsuarios = cupoUsuarios;
 	}
-	// --------------------------------------------------------------------------
-
-	// Getters
-	// --------------------------------------------------------------------------
-
+	
 	public Integer getCupoUsuarios() {
 		return cupoUsuarios;
 	}
-	
-	// --------------------------------------------------------------------------
 
 	@Override
 	public String toString() {

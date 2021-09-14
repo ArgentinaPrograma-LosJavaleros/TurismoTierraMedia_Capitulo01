@@ -26,17 +26,17 @@ public class Sistema {
 	public static void setPromociones(ArrayList<Promocion> _promociones) {
 		promociones = _promociones;
 	}
-	
+
 	public static boolean login(ArrayList<Usuario> usuarios, Usuario usuarioLogin) {
-		try {			
+		try {
 			usuarioActual = usuarios.get(usuarios.indexOf(usuarioLogin));
-		}catch(IndexOutOfBoundsException iobe) {
+		} catch (IndexOutOfBoundsException iobe) {
 			System.out.println("El usuario actual no existe");
 			return false;
 		}
 		return true;
 	}
-	
+
 	// --------------------------------------------------------------------------
 
 	// Getters
@@ -52,7 +52,7 @@ public class Sistema {
 	public static ArrayList<Promocion> getPromociones() {
 		return promociones;
 	}
-	
+
 	public static Usuario getUsuarioActual() {
 		return usuarioActual;
 	}
@@ -60,39 +60,68 @@ public class Sistema {
 
 	public static void cargarOfertas() {
 		Scanner ingreso = new Scanner(System.in);
-		
+
 		Usuario u = Sistema.getUsuarioActual();
 
 		Ticket ticket = new Ticket();
-		
+
 		Tematica tematica = u.getPreferenciaUsuario();
-		
 		for (Promocion p : Sistema.getPromociones()) {
-			System.out.println("¿Desea comprar: " + p.getNombre() + "?");
-			if (ingreso.next().toUpperCase().equals(RESPUESTA_SI)) {
-				System.out.println("Acaba de comprar: " + p.getNombre());
-				u.comprar(p, ticket);
-			}
-			System.out.println("¿Desea seguir?");
-			if (ingreso.next().toUpperCase().equals(RESPUESTA_NO)) {
-				System.out.println("Abandona for");
-				break;
+			if (verificarSugerible(p, ticket)) {
+//				System.out.println("Le sugerimos la siguiente Promoción:");
+//				System.out.println(p);
+				System.out.println("¿Desea comprar " + p.getNombre() + "?");
+				if (ingreso.next().toUpperCase().equals(RESPUESTA_SI)) {
+					System.out.println("Acaba de comprar: " + p.getNombre());
+					u.comprar(p, ticket);
+				}
+				System.out.println("¿Desea seguir?");
+				if (ingreso.next().toUpperCase().equals(RESPUESTA_NO)) {
+					System.out.println("Abandona for");
+					break;
+				}
 			}
 		}
 		for (Atraccion a : Sistema.getAtracciones()) {
-			System.out.println("¿Desea comprar: " + a.getNombre() + "?");
-			if (ingreso.next().toUpperCase().equals(RESPUESTA_SI)) {
-				System.out.println("Acaba de comprar: " + a.getNombre());
-				u.comprar(a, ticket);
-			}
-			System.out.println("¿Desea seguir?");
-			if (ingreso.next().toUpperCase().equals(RESPUESTA_NO)) {
-				System.out.println("Abandona for");
-				break;
+			if (verificarSugerible(a, ticket)) {
+				System.out.println("¿Desea comprar: " + a.getNombre() + "?");
+				if (ingreso.next().toUpperCase().equals(RESPUESTA_SI)) {
+					System.out.println("Acaba de comprar: " + a.getNombre());
+					u.comprar(a, ticket);
+				}
+				System.out.println("¿Desea seguir?");
+				if (ingreso.next().toUpperCase().equals(RESPUESTA_NO)) {
+					System.out.println("Abandona for");
+					break;
+				}
 			}
 		}
 		ingreso.close();
 		System.out.println(ticket);
+	}
+
+	private static boolean verificarSugerible(Sugerible producto, Ticket ticket) {
+		Usuario u = Sistema.getUsuarioActual();
+
+		if (u.getCantidadMonedas() >= producto.getCosto() && u.getTiempoDisponible() >= producto.getTiempo()) {
+			if (producto.getClass().equals(Atraccion.class)) {
+				if (((Atraccion) producto).getCupoUsuarios() > 0
+						&& !ticket.getAtraccionesReservadas().contains(producto.getNombre()))
+					return true;
+			} else {
+				for (Atraccion a : ((Promocion) producto).getAtracciones()) {
+					if (a.getCupoUsuarios() > 0 && !ticket.getAtraccionesReservadas().contains(a.getNombre()))
+						return true;
+				}
+				if (producto.getClass().equals(PromoAxB.class)) {
+					if (((PromoAxB) producto).getAtraccionGratis().getCupoUsuarios() > 0
+							&& !ticket.getAtraccionesReservadas()
+									.contains(((PromoAxB) producto).getAtraccionGratis().getNombre()))
+						return true;
+				}
+			}
+		}
+		return false;
 	}
 
 	public static void mostrarPromociones() {
@@ -132,21 +161,16 @@ public class Sistema {
 	}
 
 	public static void mostrarUsuarios() {
-		System.out.println(
-				" _______________________________________________________________________________________ ");
-		System.out.println(
-				"|                                                                                       |");
-		System.out.println(
-				"|                                   LISTA DE USUARIOS                                   |");
-		System.out.println(
-				"|_______________________________________________________________________________________|");
+		System.out.println(" _______________________________________________________________________________________ ");
+		System.out.println("|                                                                                       |");
+		System.out.println("|                                   LISTA DE USUARIOS                                   |");
+		System.out.println("|_______________________________________________________________________________________|");
 		for (Usuario usuario : Sistema.getUsuarios()) {
 			System.out.println(usuario);
 			System.out.println(
 					"|---------------------------------------------------------------------------------------|");
 		}
-		System.out.println(
-				"!.......................................................................................!");
+		System.out.println("!.......................................................................................!");
 	}
-	
+
 }

@@ -114,14 +114,15 @@ public class Usuario implements Comparable<Usuario>{
 			ticket.setAtraccionesReservadas(producto.getNombre());
 			((Atraccion)producto).setCupoUsuarios(((Atraccion)producto).getCupoUsuarios() - 1);
 		} else {
-			if(producto.getClass().equals(PromoAxB.class)) {
-				((PromoAxB)producto).getAtraccionGratis().setCupoUsuarios(((PromoAxB)producto).getAtraccionGratis().getCupoUsuarios() - 1);
-			}
-			ticket.setPromocionesReservadas(producto.getNombre());
-			
 			for(Atraccion a : ((Promocion)producto).getAtracciones()) {
 				a.setCupoUsuarios(a.getCupoUsuarios() - 1);
+				ticket.setAtraccionesReservadas(a.getNombre());
 			}
+			if(producto.getClass().equals(PromoAxB.class)) {
+				((PromoAxB)producto).getAtraccionGratis().setCupoUsuarios(((PromoAxB)producto).getAtraccionGratis().getCupoUsuarios() - 1);
+				ticket.setAtraccionesReservadas(((PromoAxB)producto).getAtraccionGratis().getNombre());
+			}
+			ticket.setPromocionesReservadas(producto.getNombre());
 		}
 		
 	}
