@@ -30,13 +30,20 @@ public class PromoPorcentual extends Promocion {
 	                     + "| Atracciones = %-50s" 
 				         + "| Descuento = %-36.2f" 
 	                     + "| Precio Final = %-5d"
-						 + "| Tipo = %-10s |",
+						 + "| Temática = %-15s |",
 				         super.getNombre(), 
 				         getNombreAtracciones(), 
 				         getPorciento(), 
-				         super.getCosto(), 
-				         getTipoPromocion());
+				         super.getCosto(),
+				         getTematica());
 		return "";
 	}
 
+	@Override
+	public String mostrarSugerible() {
+		super.mostrarSugerible();
+		mostrarBeneficio("%" + (int)(getPorciento() * 100) + " OFF");
+		return "";
+	}
+	
 }

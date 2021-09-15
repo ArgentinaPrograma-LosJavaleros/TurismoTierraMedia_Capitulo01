@@ -89,4 +89,30 @@ public abstract class Promocion extends Sugerible {
 		
 		return 0;
 	}
+	
+	protected String mostrarBeneficio(Object obj) {
+		double size = (double) ((58 - (double) ("Incluyen...").length()) / 2);
+		System.out.println("|" + Sistema.repiteCaracteres("x", 58) + "|");
+		System.out.println(generarDato(obj, "Beneficio:"));
+		System.out.println("|" + Sistema.repiteCaracteres("x", 58) + "|");
+		System.out.println("|" + Sistema.repiteCaracteres(" ", (int)Math.floor(size)) + "Incluyen..." + Sistema.repiteCaracteres(" ", (int)Math.ceil(size)) + "|");
+		System.out.println("|" + Sistema.repiteCaracteres("_", 58) + "|");
+		for(Atraccion a : getAtracciones())
+			mostrarAtraccion(a);
+		return "";
+	}
+	
+	private String mostrarAtraccion(Atraccion atraccion) {
+		String costo = "Costo: $" + atraccion.getCosto();		
+		String tiempo = "Tiempo: " + atraccion.getTiempo() + "Hs";
+		String cupo = "Cupo: " + atraccion.getCupoUsuarios();
+		costo = costo.replace(" ", Sistema.repiteCaracteres(" ", 18 - costo.length()));
+		tiempo = tiempo.replace(" ", Sistema.repiteCaracteres(" ", 19 - tiempo.length()));
+		cupo = cupo.replace(" ", Sistema.repiteCaracteres(" ", 16 - cupo.length()));
+		System.out.println(generarDato("", atraccion.getNombre()));
+		System.out.println("| " + costo + " | " + tiempo + " | " + cupo + " |");
+		System.out.println("|" + Sistema.repiteCaracteres("_", 58) + "|");
+		return "";
+	}
+	
 }
