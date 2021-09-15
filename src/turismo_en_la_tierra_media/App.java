@@ -9,7 +9,7 @@ import java.util.ArrayList;
 public class App {
 
 	public static void main(String[] args) throws FileNotFoundException, IOException {
-		ArrayList<Usuario> listaUsuarios = Archivo.cargarUsuarios();
+
 		boolean existe = false;
 		Scanner input = new Scanner(System.in);
 
@@ -23,7 +23,7 @@ public class App {
 			System.out.println("");
 			System.out.print("Ingrese su Nombre de Usuario: ");
 			String nombre = input.nextLine();
-			existe = Sistema.login(listaUsuarios, new Usuario(nombre));
+			existe = Sistema.login(new Usuario(nombre));
 		} while (!existe);
 
 		System.out.println("");

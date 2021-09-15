@@ -27,9 +27,9 @@ public class Sistema {
 		promociones = _promociones;
 	}
 
-	public static boolean login(ArrayList<Usuario> usuarios, Usuario usuarioLogin) {
+	public static boolean login(Usuario usuarioLogin) {
 		try {
-			usuarioActual = usuarios.get(usuarios.indexOf(usuarioLogin));
+			usuarioActual = getUsuarios().get(getUsuarios().indexOf(usuarioLogin));
 		} catch (IndexOutOfBoundsException iobe) {
 			System.out.println("El usuario actual no existe");
 			return false;
