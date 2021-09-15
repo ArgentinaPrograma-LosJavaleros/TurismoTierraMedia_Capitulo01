@@ -1,7 +1,6 @@
 package turismo_en_la_tierra_media;
 
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Scanner;
 
 public class Sistema {

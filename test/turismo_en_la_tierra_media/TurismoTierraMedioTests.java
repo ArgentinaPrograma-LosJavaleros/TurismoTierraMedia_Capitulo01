@@ -16,7 +16,7 @@ public class TurismoTierraMedioTests {
 		assertNotNull(Sistema.getAtracciones());
 		assertNotNull(Sistema.getPromociones());
 		assertNotNull(Sistema.getUsuarios());
-		assertEquals(true, Sistema.login(new Usuario("lucas")));
+		assertTrue(Sistema.login(new Usuario("profe leo")));
 		assertNotNull(Sistema.getUsuarioActual());
 	}
 
@@ -29,7 +29,7 @@ public class TurismoTierraMedioTests {
 	
 	@Test
 	public void loginDeUsuarioYExisteTest() {
-		assertTrue(Sistema.login(new Usuario("Lucas")));
+		assertTrue(Sistema.login(new Usuario("profe leo")));
 	}
 
 	@Test
@@ -38,9 +38,39 @@ public class TurismoTierraMedioTests {
 	}
 	
 	@Test
-	public void seVerificaSiTieneCuposLaAtraccion() {
-
+	public void comproUnaAtraccionTest() {
+		Ticket ticket = new Ticket();
+		Usuario usuarioActual = Sistema.getUsuarioActual();
+		Atraccion atraccionParaComprar = Sistema.getAtracciones().get(1);
+		
+		usuarioActual.comprar(Sistema.getAtracciones().get(1), ticket);
+		assertEquals(usuarioActual.getCantidadMonedas(), (Integer)1975);
+		assertEquals(usuarioActual.getTiempoDisponible(), (Double)7.0);
+		assertEquals(atraccionParaComprar.getCupoUsuarios(), (Integer)3);
 	}
 	
+	@Test
+	public void NOQuedanCuposEnAtraccionTest() {
+		Ticket ticket = new Ticket();
+		Usuario usuarioActual = Sistema.getUsuarioActual();
+		Atraccion atraccionParaComprar = Sistema.getAtracciones().get(1);
+		
+		usuarioActual.comprar(Sistema.getAtracciones().get(1), ticket);
+		assertEquals(usuarioActual.getCantidadMonedas(), (Integer)1975);
+		assertEquals(usuarioActual.getTiempoDisponible(), (Double)7.0);
+		assertEquals(atraccionParaComprar.getCupoUsuarios(), (Integer)3);
+	}
+	
+	@Test
+	public void seOrdenanLasAtraccionesTest() {
+		Ticket ticket = new Ticket();
+		Usuario usuarioActual = Sistema.getUsuarioActual();
+		Atraccion atraccionParaComprar = Sistema.getAtracciones().get(1);
+		
+		usuarioActual.comprar(Sistema.getAtracciones().get(1), ticket);
+		assertEquals(usuarioActual.getCantidadMonedas(), (Integer)1975);
+		assertEquals(usuarioActual.getTiempoDisponible(), (Double)7.0);
+		assertEquals(atraccionParaComprar.getCupoUsuarios(), (Integer)3);
+	}
 	
 }
