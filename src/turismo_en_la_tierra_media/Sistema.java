@@ -100,7 +100,7 @@ public class Sistema {
 		System.out.println(ticket);
 	}
 
-	private static boolean verificarSugerible(Sugerible producto, Ticket ticket) {
+	public static boolean verificarSugerible(Sugerible producto, Ticket ticket) {
 		Usuario u = Sistema.getUsuarioActual();
 
 		if (u.getCantidadMonedas() >= producto.getCosto() && u.getTiempoDisponible() >= producto.getTiempo()) {

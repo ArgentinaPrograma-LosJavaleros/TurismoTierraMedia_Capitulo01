@@ -114,5 +114,34 @@ public abstract class Promocion extends Sugerible {
 		System.out.println("|" + Sistema.repiteCaracteres("_", 58) + "|");
 		return "";
 	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = super.hashCode();
+		result = prime * result + ((atracciones == null) ? 0 : atracciones.hashCode());
+		result = prime * result + ((tipoPromocion == null) ? 0 : tipoPromocion.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (!super.equals(obj))
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Promocion other = (Promocion) obj;
+		if (atracciones == null) {
+			if (other.atracciones != null)
+				return false;
+		} else if (!atracciones.equals(other.atracciones))
+			return false;
+		if (tipoPromocion != other.tipoPromocion)
+			return false;
+		return true;
+	}
+	
 	
 }

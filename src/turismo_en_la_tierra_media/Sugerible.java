@@ -56,5 +56,33 @@ public abstract class Sugerible implements Comparable<Sugerible> {
 		System.out.println("|" + Sistema.repiteCaracteres("_", 58) + "|");
 		return "";
 	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((nombre == null) ? 0 : nombre.hashCode());
+		result = prime * result + ((tematica == null) ? 0 : tematica.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Sugerible other = (Sugerible) obj;
+		if (nombre == null) {
+			if (other.nombre != null)
+				return false;
+		} else if (!nombre.equals(other.nombre))
+			return false;
+		if (tematica != other.tematica)
+			return false;
+		return true;
+	}
 	
 }

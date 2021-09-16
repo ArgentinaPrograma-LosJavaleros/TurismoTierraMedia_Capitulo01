@@ -106,25 +106,25 @@ public class Usuario implements Comparable<Usuario>{
 		
 		this.setCantidadMonedas(this.cantidadMonedas - producto.getCosto());
 		this.setTiempoDisponible(this.tiempoDisponible - producto.getTiempo());
-		
+
 		ticket.setMonedasGastadas(ticket.getMonedasGastadas() + producto.getCosto());
 		ticket.setTiempoGastado(ticket.getTiempoGastado() + producto.getTiempo());
-		
-		if(producto.getClass().equals(Atraccion.class)) {
+
+		if (producto.getClass().equals(Atraccion.class)) {
 			ticket.setAtraccionesReservadas(producto.getNombre());
-			((Atraccion)producto).setCupoUsuarios(((Atraccion)producto).getCupoUsuarios() - 1);
+			((Atraccion) producto).setCupoUsuarios(((Atraccion) producto).getCupoUsuarios() - 1);
 		} else {
-			for(Atraccion a : ((Promocion)producto).getAtracciones()) {
+			for (Atraccion a : ((Promocion) producto).getAtracciones()) {
 				a.setCupoUsuarios(a.getCupoUsuarios() - 1);
 				ticket.setAtraccionesReservadas(a.getNombre());
 			}
-			if(producto.getClass().equals(PromoAxB.class)) {
-				((PromoAxB)producto).getAtraccionGratis().setCupoUsuarios(((PromoAxB)producto).getAtraccionGratis().getCupoUsuarios() - 1);
-				ticket.setAtraccionesReservadas(((PromoAxB)producto).getAtraccionGratis().getNombre());
+			if (producto.getClass().equals(PromoAxB.class)) {
+				((PromoAxB) producto).getAtraccionGratis()
+						.setCupoUsuarios(((PromoAxB) producto).getAtraccionGratis().getCupoUsuarios() - 1);
+				ticket.setAtraccionesReservadas(((PromoAxB) producto).getAtraccionGratis().getNombre());
 			}
 			ticket.setPromocionesReservadas(producto.getNombre());
 		}
-		
 	}
 	
 	

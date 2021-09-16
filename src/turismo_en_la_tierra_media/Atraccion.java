@@ -49,5 +49,7 @@ public class Atraccion extends Sugerible {
 		
 		return 0;
 	}
+	
+	
 
 }
