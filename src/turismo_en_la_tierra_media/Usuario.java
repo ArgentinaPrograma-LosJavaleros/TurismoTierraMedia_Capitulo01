@@ -1,54 +1,131 @@
 package turismo_en_la_tierra_media;
 
-public class Usuario {
-	private String nombre_usuario;
-	private Integer cantidad_monedas;
-	private Double tiempo_disponible;
-	private Tematica tematica_usuario;
+public class Usuario implements Comparable<Usuario>{
 
-	// Constructor
-	public Usuario(String nombre_usuario, Integer cantidad_monedas, Double tiempo_disponible, Tematica tematica_usuario) {
-		this.setNombre_usuario(nombre_usuario);
-		this.setCantidad_monedas(cantidad_monedas);
-		this.setTiempo_disponible(tiempo_disponible);
-		this.setTematica_usuario(tematica_usuario);
+	private String nombreUsuario;
+	private Integer cantidadMonedas;
+	private Double tiempoDisponible;
+	private Tematica preferenciaUsuario;
+
+	// Constructores
+	public Usuario(String nombreUsuario, Integer cantidadMonedas, Double tiempoDisponible,
+			Tematica preferenciaUsuario) {
+		setNombreUsuario(nombreUsuario);
+		setCantidadMonedas(cantidadMonedas);
+		setTiempoDisponible(tiempoDisponible);
+		setPreferenciaUsuario(preferenciaUsuario);
 	}
-
+	
+	public Usuario(String nombreUsuario) {
+		this(nombreUsuario, null, null, null);
+	}
+	
 	// Setters
-	// -------------------------------------------------------------------------
-	public void setNombre_usuario(String nombre_usuario) {
-		this.nombre_usuario = nombre_usuario;
+	//--------------------------------------------------------------------------
+	public void setNombreUsuario(String nombreUsuario) {
+		this.nombreUsuario = nombreUsuario;
 	}
 
-	public void setCantidad_monedas(Integer cantidad_monedas) {
-		this.cantidad_monedas = cantidad_monedas;
+	public void setCantidadMonedas(Integer cantidadMonedas) {
+		this.cantidadMonedas = cantidadMonedas;
 	}
-
-	public void setTiempo_disponible(Double tiempo_disponible) {
-		this.tiempo_disponible = tiempo_disponible;
+	
+	public void setTiempoDisponible(Double tiempoDisponible) {
+		this.tiempoDisponible = tiempoDisponible;
 	}
-
-	public void setTematica_usuario(Tematica tematica_usuario) {
-		this.tematica_usuario = tematica_usuario;
+	
+	public void setPreferenciaUsuario(Tematica preferenciaUsuario) {
+		this.preferenciaUsuario = preferenciaUsuario;
 	}
-	// -------------------------------------------------------------------------
-
+	//--------------------------------------------------------------------------
+	
 	// Getters
-	// -------------------------------------------------------------------------
-	public String getNombre_usuario() {
-		return this.nombre_usuario;
+	//--------------------------------------------------------------------------
+	public Tematica getPreferenciaUsuario() {
+		return preferenciaUsuario;
+	}
+	
+	public String getNombre() {
+		return nombreUsuario;
+	}
+	
+	public Double getTiempoDisponible() {
+		return tiempoDisponible;
 	}
 
-	public Integer getCantidad_monedas() {
-		return this.cantidad_monedas;
+	public Integer getCantidadMonedas() {
+		return cantidadMonedas;
+	}
+	//--------------------------------------------------------------------------
+
+	@Override
+	public String toString() {
+		System.out.printf("| Nombre = %-12s"
+				        + "| Monedas = %-5d"
+				        + "| Tiempo = %-5.1f"
+				        + "| Preferencia = %-15s |", 
+				        getNombre(), 
+				        getCantidadMonedas(), 
+				        getTiempoDisponible(), 
+				        getPreferenciaUsuario());
+		return "";
 	}
 
-	public Double getTiempo_disponible() {
-		return this.tiempo_disponible;
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((nombreUsuario == null) ? 0 : nombreUsuario.hashCode());
+		return result;
 	}
 
-	public Tematica getTematica_usuario() {
-		return this.tematica_usuario;
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Usuario other = (Usuario) obj;
+		if (nombreUsuario == null) {
+			if (other.nombreUsuario != null)
+				return false;
+		} else if (!nombreUsuario.toLowerCase().equals(other.nombreUsuario.toLowerCase()))
+			return false;
+		return true;
 	}
-	// -------------------------------------------------------------------------
+
+	@Override
+	public int compareTo(Usuario o) {
+		return this.getNombre().compareTo(o.getNombre());
+	}
+
+	
+	public void comprar(Sugerible producto, Ticket ticket) {
+		
+		this.setCantidadMonedas(this.cantidadMonedas - producto.getCosto());
+		this.setTiempoDisponible(this.tiempoDisponible - producto.getTiempo());
+
+		ticket.setMonedasGastadas(ticket.getMonedasGastadas() + producto.getCosto());
+		ticket.setTiempoGastado(ticket.getTiempoGastado() + producto.getTiempo());
+
+		if (producto.getClass().equals(Atraccion.class)) {
+			ticket.setAtraccionesReservadas(producto.getNombre());
+			((Atraccion) producto).setCupoUsuarios(((Atraccion) producto).getCupoUsuarios() - 1);
+		} else {
+			for (Atraccion a : ((Promocion) producto).getAtracciones()) {
+				a.setCupoUsuarios(a.getCupoUsuarios() - 1);
+				ticket.setAtraccionesReservadas(a.getNombre());
+			}
+			if (producto.getClass().equals(PromoAxB.class)) {
+				((PromoAxB) producto).getAtraccionGratis()
+						.setCupoUsuarios(((PromoAxB) producto).getAtraccionGratis().getCupoUsuarios() - 1);
+				ticket.setAtraccionesReservadas(((PromoAxB) producto).getAtraccionGratis().getNombre());
+			}
+			ticket.setPromocionesReservadas(producto.getNombre());
+		}
+	}
+	
+	
 }

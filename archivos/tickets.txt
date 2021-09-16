@@ -1,0 +1,44 @@
+ ______________________________________________
+|                                              |
+|           TURISMO EN LA TIERRA MEDIA         |
+|               TICKET DE ACCESO               |
+|______________________________________________|
+|                                              |
+|Comprador/a                              Jorge|
+|                                              |
+|Monedas Gastadas                           130|
+|                                              |
+|Tiempo Gastado                              10|
+|                                              |
+|::::::::::::::::::::::::::::::::::::::::::::::|
+|Promociones Reservadas:                       |
+|                                         Moria|
+|Atracciones Reservadas:                       |
+|                                         Moria|
+|                                              |
+|                                              |
+|        ¡MUCHAS GRACIAS POR SU COMPRA!        |
+|                                              |
+|______________________________________________|
+ ______________________________________________
+|                                              |
+|           TURISMO EN LA TIERRA MEDIA         |
+|               TICKET DE ACCESO               |
+|______________________________________________|
+|                                              |
+|Comprador/a                             Camila|
+|                                              |
+|Monedas Gastadas                           150|
+|                                              |
+|Tiempo Gastado                              30|
+|                                              |
+|::::::::::::::::::::::::::::::::::::::::::::::|
+|Promociones Reservadas:                       |
+|                                         Moria|
+|Atracciones Reservadas:                       |
+|                                         Moria|
+|                                              |
+|                                              |
+|        ¡MUCHAS GRACIAS POR SU COMPRA!        |
+|                                              |
+|______________________________________________|
