@@ -1,7 +1,6 @@
 package turismo_en_la_tierra_media;
 
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Scanner;
 
 public class Sistema {
@@ -10,7 +9,7 @@ public class Sistema {
 	private static ArrayList<Atraccion> atracciones;
 	private static ArrayList<Promocion> promociones;
 	private static Usuario usuarioActual;
-	private static final String RESPUESTA_SI = "SI";
+	protected static final String RESPUESTA_SI = "SI";
 	private static final String RESPUESTA_NO = "NO";
 
 	// Setters
@@ -27,9 +26,9 @@ public class Sistema {
 		promociones = _promociones;
 	}
 
-	public static boolean login(ArrayList<Usuario> usuarios, Usuario usuarioLogin) {
+	public static boolean login(Usuario usuarioLogin) {
 		try {
-			usuarioActual = usuarios.get(usuarios.indexOf(usuarioLogin));
+			usuarioActual = getUsuarios().get(getUsuarios().indexOf(usuarioLogin));
 		} catch (IndexOutOfBoundsException iobe) {
 			System.out.println("El usuario actual no existe");
 			return false;
@@ -68,12 +67,13 @@ public class Sistema {
 		Tematica tematica = u.getPreferenciaUsuario();
 		for (Promocion p : Sistema.getPromociones()) {
 			if (verificarSugerible(p, ticket)) {
-//				System.out.println("Le sugerimos la siguiente Promoción:");
-//				System.out.println(p);
+				System.out.println("Le sugerimos la siguiente Promoción:");
+				System.out.println(p.mostrarSugerible());
 				System.out.println("¿Desea comprar " + p.getNombre() + "?");
 				if (ingreso.next().toUpperCase().equals(RESPUESTA_SI)) {
 					System.out.println("Acaba de comprar: " + p.getNombre());
 					u.comprar(p, ticket);
+					
 				}
 				System.out.println("¿Desea seguir?");
 				if (ingreso.next().toUpperCase().equals(RESPUESTA_NO)) {
@@ -83,7 +83,9 @@ public class Sistema {
 		}
 		for (Atraccion a : Sistema.getAtracciones()) {
 			if (verificarSugerible(a, ticket)) {
-				System.out.println("¿Desea comprar: " + a.getNombre() + "?");
+				System.out.println("Le sugerimos la siguiente Atracción:");
+				System.out.println(a.mostrarSugerible());
+				System.out.println("¿Desea comprar " + a.getNombre() + "?");
 				if (ingreso.next().toUpperCase().equals(RESPUESTA_SI)) {
 					System.out.println("Acaba de comprar: " + a.getNombre());
 					u.comprar(a, ticket);
@@ -98,7 +100,7 @@ public class Sistema {
 		System.out.println(ticket);
 	}
 
-	private static boolean verificarSugerible(Sugerible producto, Ticket ticket) {
+	public static boolean verificarSugerible(Sugerible producto, Ticket ticket) {
 		Usuario u = Sistema.getUsuarioActual();
 
 		if (u.getCantidadMonedas() >= producto.getCosto() && u.getTiempoDisponible() >= producto.getTiempo()) {
@@ -123,52 +125,52 @@ public class Sistema {
 	}
 
 	public static void mostrarPromociones() {
-		System.out.println(
-				" ______________________________________________________________________________________________________________________________________________________________________________________________________");
-		System.out.println(
-				"|                                                                                                                                                                                                      |");
-		System.out.println(
-				"|                                                                                              LISTA DE PROMOCIONES                                                                                    |");
-		System.out.println(
-				"|______________________________________________________________________________________________________________________________________________________________________________________________________|");
+		double size = (double) ((207 - (double) ("LISTA DE PROMOCIONES").length()) / 2);
+		System.out.println(" " + repiteCaracteres("_", 207) + " ");
+		System.out.println("|" + repiteCaracteres(" ", 207) + "|");
+		System.out.println("|" + Sistema.repiteCaracteres(" ", (int)Math.floor(size)) + "LISTA DE PROMOCIONES" + Sistema.repiteCaracteres(" ", (int)Math.ceil(size)) + "|");
+		System.out.println("|" + repiteCaracteres("_", 207) + "|");
 		for (Promocion promocion : Sistema.getPromociones()) {
 			System.out.println(promocion);
-			System.out.println(
-					"|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|");
+			System.out.println("|" + repiteCaracteres("-", 207) + "|");
 		}
-		System.out.println(
-				"!......................................................................................................................................................................................................!");
+		System.out.println("!" + repiteCaracteres(".", 207) + "!");
 	}
 
 	public static void mostrarAtracciones() {
-		System.out.println(
-				" _______________________________________________________________________________________________________________________");
-		System.out.println(
-				"|                                                                                                                       |");
-		System.out.println(
-				"|                                                   LISTA DE ATRACCIONES                                                |");
-		System.out.println(
-				"|_______________________________________________________________________________________________________________________|");
+		double size = (double) ((119 - (double) ("LISTA DE ATRACCIONES").length()) / 2);
+		System.out.println(" " + repiteCaracteres("_", 119) + " ");
+		System.out.println("|" + repiteCaracteres(" ", 119) + "|");
+		System.out.println("|" + Sistema.repiteCaracteres(" ", (int)Math.floor(size)) + "LISTA DE ATRACCIONES" + Sistema.repiteCaracteres(" ", (int)Math.ceil(size)) + "|");
+		System.out.println("|" + repiteCaracteres("_", 119) + "|");
 		for (Atraccion atraccion : Sistema.getAtracciones()) {
 			System.out.println(atraccion);
-			System.out.println(
-					"|-----------------------------------------------------------------------------------------------------------------------|");
+			System.out.println("|" + repiteCaracteres("-", 119) + "|");
 		}
-		System.out.println(
-				"!.......................................................................................................................!");
+		System.out.println("!" + repiteCaracteres(".", 207) + "!");
 	}
 
 	public static void mostrarUsuarios() {
-		System.out.println(" _______________________________________________________________________________________ ");
-		System.out.println("|                                                                                       |");
-		System.out.println("|                                   LISTA DE USUARIOS                                   |");
-		System.out.println("|_______________________________________________________________________________________|");
+		double size = (double) ((87 - (double) ("LISTA DE USUARIOS").length()) / 2);
+		System.out.println(" " + repiteCaracteres("_", 87) + " ");
+		System.out.println("|" + repiteCaracteres(" ", 87) + "|");
+		System.out.println("|" + Sistema.repiteCaracteres(" ", (int)Math.floor(size)) + "LISTA DE USUARIOS" + Sistema.repiteCaracteres(" ", (int)Math.ceil(size)) + "|");
+		System.out.println("|" + repiteCaracteres("_", 87) + "|");		
 		for (Usuario usuario : Sistema.getUsuarios()) {
 			System.out.println(usuario);
-			System.out.println(
-					"|---------------------------------------------------------------------------------------|");
+			
+			System.out.println("|" + repiteCaracteres("-", 87) + "|");
 		}
-		System.out.println("!.......................................................................................!");
+		
+		System.out.println("!" + repiteCaracteres(".", 87) + "!");
+	}
+	
+	public static String repiteCaracteres(String str, Integer cantidad) {
+		String str2 = "";
+		for(int i = 0; i < cantidad; i++) {
+			str2 += str;
+		}
+		return str2;
 	}
 
 }

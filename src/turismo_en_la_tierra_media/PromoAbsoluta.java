@@ -27,12 +27,19 @@ public class PromoAbsoluta extends Promocion {
 		                + "| Atracciones = %-50s"
 		                + "| Costo Anterior = %-31d"
 		                + "| Precio Final = %-5d"
-		                + "| Tipo = %-10s |", 
+		                + "| Temática = %-15s |", 
 		                super.getNombre(),
 		                getNombreAtracciones(),
 		                getCostoAnterior(),
 		                super.getCosto(),
-		                getTipoPromocion());
+		                getTematica());
+		return "";
+	}
+	
+	@Override
+	public String mostrarSugerible() {
+		super.mostrarSugerible();
+		mostrarBeneficio("-$" + (getCostoAnterior() - getCosto()));
 		return "";
 	}
 
