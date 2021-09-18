@@ -79,7 +79,6 @@ public class Ticket {
 
 	@Override
 	public String toString() {
-		if (getMonedasGastadas() != 0) {
 			System.out.println(" ______________________________________________");
 			System.out.println("|                                              |");
 			System.out.println("|           TURISMO EN LA TIERRA MEDIA         |");
@@ -104,11 +103,6 @@ public class Ticket {
 			System.out.println("|        ¡MUCHAS GRACIAS POR SU COMPRA!        |");
 			System.out.println("|                                              |");
 			System.out.println("|______________________________________________|");
-
-		} else {
-			System.out.println("");
-			System.out.println("No se pudo efectuar la compra... ¡¡¡Gracias por visitar Turismo en la Tierra Media!!!");
-		}
 		return "";
 	}
 }

@@ -4,12 +4,10 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.Collections;
 import java.util.Scanner;
-import java.util.ArrayList;
 
 public class App {
 
 	public static void main(String[] args) throws FileNotFoundException, IOException {
-
 		boolean existe = false;
 		Scanner input = new Scanner(System.in);
 
