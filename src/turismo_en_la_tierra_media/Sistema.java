@@ -1,5 +1,7 @@
 package turismo_en_la_tierra_media;
 
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -57,7 +59,7 @@ public class Sistema {
 	}
 	// --------------------------------------------------------------------------
 
-	public static void cargarOfertas() {
+	public static void cargarOfertas() throws FileNotFoundException, IOException {
 		Scanner ingreso = new Scanner(System.in);
 
 		Usuario u = Sistema.getUsuarioActual();
@@ -96,7 +98,13 @@ public class Sistema {
 			}
 		}
 		ingreso.close();
-		System.out.println(ticket);
+		if (ticket.getMonedasGastadas() != 0) {
+			System.out.println(ticket);
+			Archivo.generarTicket(ticket, false);
+		} else {
+			System.out.println("");
+			System.out.println("No se pudo efectuar la compra... ¡¡¡Gracias por visitar Turismo en la Tierra Media!!!");
+		}
 	}
 
 	public static boolean verificarSugerible(Sugerible producto, Ticket ticket) {
