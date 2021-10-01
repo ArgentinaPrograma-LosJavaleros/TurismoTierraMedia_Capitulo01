@@ -13,7 +13,8 @@ public class Archivo {
 
 	// Convierte en string la dirección de la carpeta "Archivos" en donde se está
 	// ejecutando el código.
-	private static final String DIRECCION_ARCHIVO = System.getProperty("user.dir") + "\\archivos\\";
+	private static final String DIRECCION_PRINCIPAL = System.getProperty("user.dir");
+	private static final String DIRECCION_ARCHIVO = DIRECCION_PRINCIPAL  + "\\archivos\\";
 
 	public static ArrayList<Usuario> cargarUsuarios() {
 
@@ -217,5 +218,37 @@ public class Archivo {
 		pw.close();
 
 		return ticket;
+	}
+	
+	public static void parseCSV(String path) {
+		
+		Scanner sc = null;
+		PrintWriter pw = null;
+		try {
+
+			sc = iniciarScanner(path);
+			pw = new PrintWriter(new FileWriter(DIRECCION_PRINCIPAL + "\\archivoscsv\\" + path.replace(".txt", ".csv"), false));
+
+			while (sc.hasNext()) {
+
+				String line = sc.nextLine();
+				
+				
+				line = line.replace(' ', ',')
+						   .replace('_', ' ');
+				
+				pw.println(line);
+				
+			}
+
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		} finally {
+			sc.close();
+			pw.close();
+		}
+
 	}
 }
